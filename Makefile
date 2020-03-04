@@ -6,7 +6,7 @@
 #    By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/07 14:04:00 by nverbrug          #+#    #+#              #
-#    Updated: 2020/02/09 14:01:11 by nverbrug         ###   ########.fr        #
+#    Updated: 2020/03/04 14:38:18 by nverbrug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,17 @@ NAME = libftprintf.a
 FLAGS = -Wall -Wextra -Werror
 LFT_SRC = libft
 LIBFT = $(LFT_SRC)/libft.a
-SRCS = ft_printf.c 
+SRCS = ft_printf.c \
+	   check_flags.c \
+	   check_specifier.c \
+	   specifier_int.c \
+	   specifier_char.c\
+	   specifier_str.c \
+	   specifier_pointer.c \
+	   flags_zero.c \
+	   flags_percentage.c \
+	   ft_utils.c
+
 OBJS = $(SRCS:.c=.o)
 all: $(LIBFT) $(NAME)
 $(NAME): $(OBJS)

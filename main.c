@@ -22,8 +22,8 @@
 int		main(void)
 {
 
-	ft_printf("%d\n", ft_printf("%*.5s", -15, "hellohello"));
-	printf("%d\n", printf("%*.5s", -15, "hellohello"));
+	//ft_printf("%d\n", ft_printf("%5s", "goes over"));
+	printf("%d\n", printf("%-3s", NULL));
 
 
 	return(0);

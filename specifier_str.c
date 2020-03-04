@@ -6,7 +6,7 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:15:20 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/03/04 13:32:28 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:58:09 by nverbrug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	specifier_str_2(va_list arg, int *p, int *i, t_flag *flag)
 	}
 	else if (flag->point != 0)
 	{
-		
+		if (flag->n1 != 0)
+			handle_2(flag->n1, p, x, flag);
+		else
+			ft_putstr(x, p, flag->n2);
 	}
 	*i += 1;
 }
