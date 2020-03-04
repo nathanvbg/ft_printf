@@ -6,7 +6,7 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:15:20 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/03/04 15:55:44 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/03/04 16:41:36 by nverbrug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	specifier_str_2(va_list arg, int *p, int *i, t_flag *flag)
 	}
 	else if (flag->point != 0)
 	{
+		if (flag->n2 == 0)
+			handle_3(p, flag);
 		if (flag->n1 != 0)
 			handle_2(flag->n1, p, x, flag);
 		else

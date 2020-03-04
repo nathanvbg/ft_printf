@@ -6,7 +6,7 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 15:00:09 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/03/04 15:16:32 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/03/04 16:41:43 by nverbrug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,19 @@ void	handle_2(int nb, int *p, char *x, t_flag *flag)
 			nb -= 1;
 		}
 	}
+}
+
+void	handle_3(int *p, t_flag *flag)
+{
+	if (flag->n1 != 0)
+	{
+		while (flag->n1 > 0)
+		{
+			ft_putchar(' ', p);
+			flag->n1 -= 1;
+		}
+	}
+	//else if (flag->n1 == 0)
 }
 
 void	print_space_zero(int nb, int *p, unsigned char x, t_flag *flag)

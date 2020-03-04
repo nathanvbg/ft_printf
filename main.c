@@ -22,7 +22,7 @@
 int		main(void)
 {
 
-	//ft_printf("%d\n", ft_printf("%3.s", ));
+	ft_printf("%d\n", ft_printf("%3.s", "hello"));
 	printf("%d\n", printf("%3.s", "hello"));
 
 	return(0);

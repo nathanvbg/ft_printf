@@ -6,7 +6,7 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 13:05:38 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/03/04 13:32:04 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/03/04 16:41:20 by nverbrug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void			specifier_str_1(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_str_2(va_list arg, int *p, int *i, t_flag *flag);
 void			handle_1(int nb, int *p, char *x, t_flag *flag);
 void			handle_2(int nb, int *p, char *x, t_flag *flag);
+void			handle_3(int *p, t_flag *flag);
 void			specifier_pointer(va_list arg, int *p, int *i);
 void			flags_percentage(int *p, int *i);
 void			flags_zero(va_list arg, char *str, int *p, int *i);
