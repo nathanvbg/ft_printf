@@ -6,7 +6,7 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 15:07:28 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/03/04 13:22:47 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/03/04 16:09:52 by nverbrug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,17 @@ void	ft_putstr(char *str, int *p, int nb)
 	int i;
 
 	i = 0;
-	while (str[i] != '\0' && i < nb)
+	if (str == NULL)
 	{
-		ft_putchar(str[i], p);
-		i++;
+		write(1, "(null)", 6);
+		*p += 6;
+	}
+	else
+	{
+		while (str[i] != '\0' && i < nb)
+		{
+			ft_putchar(str[i], p);
+			i++;
+		}
 	}
 }
