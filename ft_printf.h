@@ -57,7 +57,7 @@ void			print_space_zero(int nb, int *p, unsigned char x, t_flag *flag);
 void			specifier_str(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_str_1(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_str_2(va_list arg, int *p, int *i, t_flag *flag);
-void			handle_1(int nb, int *p, char *x, t_flag *flag);
+void			handle_1(int nb, int *p, char *x, t_flag *flag, char c);
 void			handle_2(int nb, int *p, char *x, t_flag *flag);
 void			handle_3(int *p, t_flag *flag);
 void			specifier_pointer(va_list arg, int *p, int *i);

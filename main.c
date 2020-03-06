@@ -21,9 +21,11 @@
 
 int		main(void)
 {
+char *c;
 
-	ft_printf("%d\n", ft_printf("%3.s", "hello"));
-	printf("%d\n", printf("%3.s", "hello"));
+c = "yo";
+	ft_printf("%d\n", ft_printf("%9s", c));
+	printf("%d\n", printf("%9s", c));
 
-	return(0);
+return(0);
 }

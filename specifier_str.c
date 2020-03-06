@@ -27,16 +27,18 @@ void	specifier_str_2(va_list arg, int *p, int *i, t_flag *flag)
 	x = va_arg(arg, char*);
 	if (flag->point == 0)
 	{
-		if (flag->n1 != 0)
-			handle_1(flag->n1, p, x, flag);
+		if (flag->n1 != 0 && flag->zero == 0)
+			handle_1(flag->n1, p, x, flag, ' ');
+		else if (flag->n1 != 0 && flag->zero == 1)
+			handle_1(flag->n1, p, x, flag, '0');//! pas utilise, cherche derniere faute du test
 		else
 			ft_putstr(x, p, ft_strlen(x));
 	}
 	else if (flag->point != 0)
 	{
-		if (flag->n2 == 0)
+		if (flag->n2 == 0 && flag->n1 != 0)
 			handle_3(p, flag);
-		if (flag->n1 != 0)
+		else if (flag->n1 != 0)
 			handle_2(flag->n1, p, x, flag);
 		else
 			ft_putstr(x, p, flag->n2);
@@ -57,7 +59,7 @@ void	specifier_str_1(va_list arg, int *p, int *i, t_flag *flag)
 		nb = nb * -1;
 	}
 	if (flag->point == 0)
-		handle_1(nb, p, x, flag);
+		handle_1(nb, p, x, flag, ' ');
 	else if (flag->point != 0)
 	{
 		handle_2(nb, p, x, flag);

@@ -17,13 +17,15 @@ void	ft_putstr(char *str, int *p, int nb)
 	int i;
 
 	i = 0;
-	if (str == NULL)
+	if (str == NULL && nb == 0)
 	{
 		write(1, "(null)", 6);
 		*p += 6;
 	}
 	else
 	{
+		if (str == NULL && nb != 0)
+			str = "(null)";
 		while (str[i] != '\0' && i < nb)
 		{
 			ft_putchar(str[i], p);

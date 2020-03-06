@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 
 
-void	handle_1(int nb, int *p, char *x, t_flag *flag)
+void	handle_1(int nb, int *p, char *x, t_flag *flag, char c)
 {
 	if ((int)ft_strlen(x) > nb)
 		ft_putstr(x, p, ft_strlen(x));
@@ -21,7 +21,7 @@ void	handle_1(int nb, int *p, char *x, t_flag *flag)
 	{
 		while(nb - ft_strlen(x) > 0)
 		{
-			ft_putchar(' ', p);
+			ft_putchar(c, p);
 			nb -= 1;
 		}
 		ft_putstr(x, p, ft_strlen(x));
@@ -31,7 +31,7 @@ void	handle_1(int nb, int *p, char *x, t_flag *flag)
 		ft_putstr(x, p, ft_strlen(x));
 		while(nb - ft_strlen(x) > 0)
 		{
-			ft_putchar(' ', p);
+			ft_putchar(c, p);
 			nb -= 1;
 		}
 	}
