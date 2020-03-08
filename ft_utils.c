@@ -95,3 +95,59 @@ void	print_space_zero(int nb, int *p, unsigned char x, t_flag *flag)
 		}
 	}
 }
+
+void	handle_5(int nb, int *p, int x, t_flag *flag, char c)
+{
+	if ((int)ft_intlen(x) > nb)
+		ft_putnbr(x, p);
+	else if (flag->minus == 0)
+	{
+		while(nb - ft_intlen(x) > 0)
+		{
+			ft_putchar(c, p);
+			nb -= 1;
+		}
+		ft_putnbr(x, p);
+	}
+	else if (flag->minus == 1)
+	{
+		ft_putnbr(x, p);
+		while(nb - ft_intlen(x) > 0)
+		{
+			ft_putchar(c, p);
+			nb -= 1;
+		}
+	}
+}
+
+void	handle_6(int nb, int *p, int x, t_flag *flag)
+{
+	nb = 0;
+	if ((ft_intlen(x) >= flag->n1) && (ft_intlen(x) >= flag->n2))
+		ft_putnbr(x, p);
+	else if (flag->n2 > ft_intlen(x) && flag->n2 >= flag->n1)
+	{
+		if (x < 0)
+		{
+			ft_putchar('-', p);
+			x *= -1;
+		}
+		handle_5(flag->n2, p, x, flag,'0');
+	}
+	else if (flag->n1 > flag->n2 && flag->n2 > ft_intlen(x))
+	{
+		while (flag->n1 > flag->n2 + 1)
+		{
+			ft_putchar(' ', p);
+			flag->n1 -= 1;
+		}
+		if (x < 0)
+		{
+			ft_putchar('-', p);
+			x *= -1;
+		}
+		else
+			ft_putchar(' ', p);
+		handle_5(flag->n2, p, x, flag, '0');
+	}
+}

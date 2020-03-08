@@ -30,6 +30,7 @@ void        ft_putstr(char *str, int *p, int nb);
 void        ft_utoh(unsigned int x, int *p);
 void        ft_stoh(size_t x, int *p);
 void        ft_utohex(unsigned int x, int *p);
+int         ft_intlen(int x);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_isalpha (int c);
 int			ft_isdigit(int c);

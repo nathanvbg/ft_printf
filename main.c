@@ -21,11 +21,9 @@
 
 int		main(void)
 {
-char *c;
 
-c = "yo";
-	ft_printf("%d\n", ft_printf("%9s", c));
-	printf("%d\n", printf("%9s", c));
+	ft_printf("=%d\n", ft_printf("%15.10i", -14));
+	printf("=%d\n", printf("%15.10i", -14));
 
 return(0);
 }

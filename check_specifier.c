@@ -14,8 +14,8 @@
 
 void	check_specifier(va_list arg, char *str, int *p, int *i, t_flag *flag)
 {
-str[*i] == 'd' ? specifier_int(arg, p, i) : 0;
-str[*i] == 'i' ? specifier_int(arg, p, i) : 0;
+str[*i] == 'd' ? specifier_int(arg, p, i, flag) : 0;
+str[*i] == 'i' ? specifier_int(arg, p, i, flag) : 0;
 str[*i] == 'u' ? specifier_uint(arg, p, i) : 0;
 str[*i] == 'c' ? specifier_char(arg, p, i, flag) : 0;
 str[*i] == 's' ? specifier_str(arg, p, i, flag) : 0;
