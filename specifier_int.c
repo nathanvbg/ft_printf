@@ -40,7 +40,8 @@ void	specifier_int_2(va_list arg, int *p, int *i, t_flag *flag)
 	{
 		if (flag->n2 == 0 && flag->n1 != 0)//ATTENTION STR
 			handle_3(p, flag);
-		else if (flag->n1 != 0 && flag->n2 != 0)
+		else if ((flag->n1 != 0 && flag->n2 != 0)
+		|| (flag->n1 == 0 && flag->n2 != 0))
 			handle_6(flag->n1, p, x, flag);
 		else
 			ft_putnbr(x, p);//ATTNETION STR

@@ -64,6 +64,7 @@ void			handle_3(int *p, t_flag *flag);
 void			print_space_zero(int nb, int *p, unsigned char x, t_flag *flag);
 void			handle_5(int nb, int *p, int x, t_flag *flag, char c);
 void			handle_6(int nb, int *p, int x, t_flag *flag);
+void			handle_7(int *p, int x, t_flag *flag);
 void			specifier_pointer(va_list arg, int *p, int *i);
 void			flags_percentage(int *p, int *i);
 void			flags_zero(va_list arg, char *str, int *p, int *i);

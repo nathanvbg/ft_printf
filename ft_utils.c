@@ -136,18 +136,24 @@ void	handle_6(int nb, int *p, int x, t_flag *flag)
 	}
 	else if (flag->n1 > flag->n2 && flag->n2 > ft_intlen(x))
 	{
-		while (flag->n1 > flag->n2 + 1)
-		{
-			ft_putchar(' ', p);
-			flag->n1 -= 1;
-		}
+		handle_7(p, x, flag);
 		if (x < 0)
-		{
-			ft_putchar('-', p);
 			x *= -1;
-		}
-		else
-			ft_putchar(' ', p);
 		handle_5(flag->n2, p, x, flag, '0');
 	}
+}
+
+void	handle_7(int *p, int x, t_flag *flag)
+{
+	while (flag->n1 > flag->n2 + 1)
+	{
+		ft_putchar(' ', p);
+		flag->n1 -= 1;
+	}
+	if (x < 0)
+	{
+		ft_putchar('-', p);
+	}
+	else
+	ft_putchar(' ', p);
 }
