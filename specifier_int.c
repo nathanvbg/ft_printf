@@ -18,34 +18,44 @@ void	specifier_int(va_list arg, int *p, int *i, t_flag *flag)
 {
 	if (flag->star1 != 0)
 		specifier_int_1(arg, p, i, flag);
-	else
+	else if (flag->point == 0)
 		specifier_int_2(arg, p, i, flag);
+	else if (flag->point != 0)
+		specifier_int_3(arg, p, i, flag);
 }
 
 void	specifier_int_2(va_list arg, int *p, int *i, t_flag *flag)
 {
-	int x;
+	char *x;
 
-	x = va_arg(arg, int);
-	if (flag->point == 0)
+	x = ft_itoa(va_arg(arg, int));//comment securiser? avec break?
+	if (flag->n1 != 0 && flag->zero == 0)
+		handle_1(flag->n1, p, x, flag, ' ');
+	else if (flag->n1 != 0 && flag->zero == 1)//ATTENTION STR
+		handle_1(flag->n1, p, x, flag, '0');//! pas utilise, cherche derniere faute du test
+	else
+		ft_putstr(x, p, ft_strlen(x));
+	*i+=1;
+}
+
+void	specifier_int_3(va_list arg, int *p, int *i, t_flag *flag)
+{
+	char *x;
+
+	x = ft_itoa(va_arg(arg, int));//proteger
+	if (flag->n2 == 0 && flag->n1 != 0)//ATTENTION STR
+		handle_1(flag->n1, p, x, flag, ' ');//avant j avais mis handle 3 
+	else if (flag->n1 != 0 && flag->n2 != 0)
 	{
-		if (flag->n1 != 0 && flag->zero == 0)
-			handle_5(flag->n1, p, x, flag, ' ');
-		else if (flag->n1 != 0 && flag->zero == 1)//ATTENTION STR
-			handle_5(flag->n1, p, x, flag, '0');//! pas utilise, cherche derniere faute du test
-		else
-			ft_putnbr(x, p);
+		if (flag->n2 > flag->n1)
+			handle_1(flag->n1, p, x, flag, '0');
+		//else if (flag->n2 < flag->n1)
+			
 	}
-	else if (flag->point != 0)
-	{
-		if (flag->n2 == 0 && flag->n1 != 0)//ATTENTION STR
-			handle_3(p, flag);
-		else if ((flag->n1 != 0 && flag->n2 != 0)
-		|| (flag->n1 == 0 && flag->n2 != 0))
-			handle_6(flag->n1, p, x, flag);
-		else
-			ft_putnbr(x, p);//ATTNETION STR
-	}
+	else if (flag->n1 == 0 && flag->n2 != 0)
+		handle_1(flag->n1, p, x, flag, '0');
+	else
+		ft_putstr(x, p, ft_strlen(x));//ATTNETION STR
 	*i += 1;
 }
 
@@ -62,7 +72,7 @@ void	specifier_int_1(va_list arg, int *p, int *i, t_flag *flag)
 		nb = nb * -1;
 	}
 	if (flag->point == 0)
-		handle_5(nb, p, x, flag, ' ');
+		handle_5(nb, p, x, flag, ' ');//remplacer par handle1
 	else if (flag->point != 0)
 	{
 		handle_2(nb, p, "test", flag);

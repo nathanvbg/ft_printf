@@ -22,8 +22,10 @@
 int		main(void)
 {
 
-	ft_printf("=%d\n", ft_printf("%.5d", 2));
-	printf("=%d\n", printf("%.10d", 4));
+	//ft_printf("=%d\n", ft_printf("%10d", 2));
+
+	printf("=%d\n\n", printf("\n%15.10d\n", 123));
+	printf("=%d\n\n", printf("%15.10s\n", "abc"));
 
 return(0);
 }

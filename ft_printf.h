@@ -58,6 +58,7 @@ void			specifier_str_2(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_int(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_int_1(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_int_2(va_list arg, int *p, int *i, t_flag *flag);
+void			specifier_int_3(va_list arg, int *p, int *i, t_flag *flag);
 void			handle_1(int nb, int *p, char *x, t_flag *flag, char c);
 void			handle_2(int nb, int *p, char *x, t_flag *flag);
 void			handle_3(int *p, t_flag *flag);
