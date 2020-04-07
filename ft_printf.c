@@ -16,8 +16,6 @@ void	ft_init_flag(t_flag *flag)
 {
 	flag->zero = 0;
 	flag->point = 0;
-	flag->star1 = 0;
-	flag->star2 = 0;
 	flag->minus = 0;
 	flag->percentage = 0;
 	flag->n1 = 0;

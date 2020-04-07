@@ -17,35 +17,68 @@
 
 void	specifier_char(va_list arg, int *p, int *i, t_flag *flag)
 {
-	if (flag->star1 != 0)
-		specifier_char_1(arg, p, i, flag);
-	else
-		specifier_char_2(arg, p, i, flag);
+		specifier_char_2(arg, p, i, flag);//useless
 }
 void	specifier_char_2(va_list arg, int *p, int *i, t_flag *flag)
 {
-	unsigned char x;
+	char x;// unsigned char dans d autres travaux, pq..?
 
-	x = (unsigned char)va_arg(arg, int);
+	x = (char)va_arg(arg, int);//??? char int ???
 	if (flag->n1 != 0)
-		print_space_zero(flag->n1, p, x, flag);
+		print_space(flag->n1, p, x, flag);
 	else
 		ft_putchar(x, p);
 	*i += 1;
 }
 
-void	specifier_char_1(va_list arg, int *p, int *i, t_flag *flag)
+void	print_space(int nb, int *p, char x, t_flag *flag)
 {
-	unsigned char	x;
-	int				nb;
-
-	nb = va_arg(arg, int);
-	x = (unsigned char)va_arg(arg, int);
-	if (nb < 0)
+	if (flag->minus == 0)
 	{
-		flag->minus = 1;
-		nb = nb * -1;
+		while(nb - 1 > 0)
+		{
+			ft_putchar(' ', p);
+			nb -= 1;
+		}
+		ft_putchar(x, p);
 	}
-	print_space_zero(nb, p, x, flag);
-	*i += 1;
+	if (flag->minus == 1)
+	{
+		ft_putchar(x, p);
+		while(nb - 1 > 0)
+		{
+			ft_putchar(' ', p);
+			nb -= 1;
+		}
+	}
 }
+
+/*
+ void    handle_1(int nb, int *p, char *x, t_flag *flag, char c)
+ {
+     if (flag->n2 == 0)
+         flag->n2 = (int)ft_strlen(x);//cast bon?
+     else if (flag->n2 > (int)ft_strlen(x))
+         flag->n2 = (int)ft_strlen(x);
+     if (flag->n2 > nb)
+         ft_putstr(x, p, flag->n2);
+     else if (flag->minus == 0)
+     {
+         while(nb - flag->n2 > 0)
+         {
+             ft_putchar(c, p);
+             nb -= 1;
+         }
+         ft_putstr(x, p, flag->n2);
+     }
+     else if (flag->minus == 1)
+     {
+         ft_putstr(x, p, flag->n2);
+         while(nb - flag->n2 > 0)
+         {
+             ft_putchar(c, p);
+             nb -= 1;
+         }
+     }
+ }
+ */

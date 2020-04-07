@@ -14,10 +14,7 @@
 
 void	specifier_str(va_list arg, int *p, int *i, t_flag *flag)
 {
-	if (flag->star1 != 0)
-		specifier_str_1(arg, p, i, flag);
-	else
-		specifier_str_2(arg, p, i, flag);
+		specifier_str_2(arg, p, i, flag);//useless
 }
 
 void	specifier_str_2(va_list arg, int *p, int *i, t_flag *flag)
@@ -42,27 +39,6 @@ void	specifier_str_2(va_list arg, int *p, int *i, t_flag *flag)
 			handle_2(flag->n1, p, x, flag);
 		else
 			ft_putstr(x, p, flag->n2);
-	}
-	*i += 1;
-}
-
-void	specifier_str_1(va_list arg, int *p, int *i, t_flag *flag)
-{
-	char	*x;
-	int		nb;
-
-	nb = va_arg(arg, int);
-	x = va_arg(arg, char*);
-	if (nb < 0)
-	{
-		flag->minus = 1;
-		nb = nb * -1;
-	}
-	if (flag->point == 0)
-		handle_1(nb, p, x, flag, ' ');
-	else if (flag->point != 0)
-	{
-		handle_2(nb, p, x, flag);
 	}
 	*i += 1;
 }

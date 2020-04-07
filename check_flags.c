@@ -21,7 +21,7 @@ void	check_flags_0(char *str,int *i, t_flag *flag)
 	}
 }
 
-void	check_flags_1(char *str, int *i, t_flag*flag)
+void	check_flags_1(va_list arg, char *str, int *i, t_flag*flag)
 {
 	while (ft_isdigit(str[*i]) == 1 || str[*i] == '-' || str[*i] == '*')
 	{
@@ -32,7 +32,7 @@ void	check_flags_1(char *str, int *i, t_flag*flag)
 		}
 		if (str[*i] == '*')
 		{
-			flag->star1 = 1;
+			flag->n1 = va_arg(arg, int);//star1
 			*i += 1;
 		}
 		while (str[*i] >= '0' && str[*i] <= '9')
@@ -57,7 +57,7 @@ void	check_flags_2(char *str, int *i, t_flag*flag)
 	}
 }
 
-void	check_flags_3(char *str, int *i, t_flag*flag)
+void	check_flags_3(va_list arg, char *str, int *i, t_flag*flag)
 {
 	while (ft_isdigit(str[*i]) == 1 || str[*i] == '-' || str[*i] == '*')
 	{
@@ -68,7 +68,7 @@ void	check_flags_3(char *str, int *i, t_flag*flag)
 		}
 		if (str[*i] == '*')
 		{
-			flag->star2 = 1;
+			flag->n2 = va_arg(arg, int);
 			*i += 1;
 		}
 		while (str[*i] >= '0' && str[*i] <= '9')
@@ -84,9 +84,9 @@ void	check_flags(va_list arg, char *str, int *p, int *i, t_flag *flag)
 	*i = *i + 1;
 
 	check_flags_0(str, i,flag);
-	check_flags_1(str, i, flag);
+	check_flags_1(arg, str, i, flag);
 	check_flags_2(str, i, flag);
-	check_flags_3(str, i, flag);
+	check_flags_3(arg, str, i, flag);
 
 	check_specifier(arg, str, p, i, flag);
 }

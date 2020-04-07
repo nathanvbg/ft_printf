@@ -74,6 +74,7 @@ void	handle_3(int *p, t_flag *flag)
 	//else if (flag->n1 == 0)
 }
 
+/*
 void	print_space_zero(int nb, int *p, unsigned char x, t_flag *flag)
 {
 	if (flag->minus == 0)
@@ -95,6 +96,7 @@ void	print_space_zero(int nb, int *p, unsigned char x, t_flag *flag)
 		}
 	}
 }
+*/
 
 void	handle_5(int nb, int *p, int x, t_flag *flag, char c)
 {
