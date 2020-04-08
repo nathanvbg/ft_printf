@@ -12,6 +12,15 @@
 
 #include "ft_printf.h"
 
+void	ft_free(char **str)
+{
+	if (*str)
+	{
+		free(*str);
+		*str = NULL;
+	}
+//	return (i);
+}
 
 void	handle_1(int nb, int *p, char *x, t_flag *flag, char c)
 {
@@ -61,67 +70,43 @@ void	handle_2(int nb, int *p, char *x, t_flag *flag)
 	}
 }
 
-void	handle_3(int *p, t_flag *flag)
+void	print_only_space(int *p, int i)//pour str
 {
-	if (flag->n1 != 0)
+	if (i != 0)
 	{
-		while (flag->n1 > 0)
+		while (i > 0)
 		{
 			ft_putchar(' ', p);
-			flag->n1 -= 1;
+			i -= 1;
 		}
 	}
 	//else if (flag->n1 == 0)
 }
 
 /*
-void	print_space_zero(int nb, int *p, unsigned char x, t_flag *flag)
+void	handle_5(int nb, int *p, char *x, t_flag *flag, char c)
 {
-	if (flag->minus == 0)
-	{
-		while(nb - 1 > 0)
-		{
-			ft_putchar(' ', p);
-			nb -= 1;
-		}
-		ft_putchar(x, p);
-	}
-	if (flag->minus == 1)
-	{
-		ft_putchar(x, p);
-		while(nb - 1 > 0)
-		{
-			ft_putchar(' ', p);
-			nb -= 1;
-		}
-	}
-}
-*/
-
-void	handle_5(int nb, int *p, int x, t_flag *flag, char c)
-{
-	if ((int)ft_intlen(x) > nb)
-		ft_putnbr(x, p);
+	if ((int)ft_strlen(x) > nb)
+		ft_putstr(x, p, ft_strlen(x));
 	else if (flag->minus == 0)
 	{
-		while(nb - ft_intlen(x) > 0)
+		while(nb - ft_strlen(x) > 0)
 		{
 			ft_putchar(c, p);
 			nb -= 1;
 		}
-		ft_putnbr(x, p);
+		ft_putstr(x, p, ft_strlen(x));
 	}
 	else if (flag->minus == 1)
 	{
-		ft_putnbr(x, p);
-		while(nb - ft_intlen(x) > 0)
+		ft_putstr(x, p, ft_strlen(x));
+		while(nb - ft_strlen(x) > 0)
 		{
 			ft_putchar(c, p);
 			nb -= 1;
 		}
 	}
 }
-
 void	handle_6(int nb, int *p, int x, t_flag *flag)
 {
 	nb = 0;
@@ -159,3 +144,4 @@ void	handle_7(int *p, int x, t_flag *flag)
 	else
 	ft_putchar(' ', p);
 }
+*/
