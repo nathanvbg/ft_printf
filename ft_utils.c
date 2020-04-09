@@ -70,14 +70,14 @@ void	handle_2(int nb, int *p, char *x, t_flag *flag)
 	}
 }
 
-void	print_only_c(int *p, int i, char c)
+void	print_only_c(int *p, int nb, char c)
 {
-	if (i != 0)
+	if (nb > 0)
 	{
-		while (i > 0)
+		while (nb > 0)
 		{
 			ft_putchar(c, p);
-			i -= 1;
+			nb -= 1;
 		}
 	}
 }
