@@ -34,32 +34,34 @@ void	tri_flags(int *p, int *i, t_flag *flag, char *x)
 {
 	if (flag->minus == 1)
 		flag->zero = 0;
-	if (flag->point == 0 && flag->minus == 0)
-		specifier_int_2(p, i, flag, x);
-	//if (flag->point == 0 && flag->minus == 1)
-		//specifier_int_3(p, i, flag, x);
+	if (flag->point == 0)
+		no_point(p, i, flag, x);
 	else if (flag->point != 0)
 		int_point_1(p, i, flag, x);
 }
 
-void	specifier_int_2(int *p, int *i, t_flag *flag, char *x)
+void	no_point(int *p, int *i, t_flag *flag, char *x)
 {
 	if (flag->neg_nb == 1)
 	{
-		//printf("%zu", ft_strlen(x));
-		if (((int)ft_strlen(x) + 1) >= flag->n1)
-			ft_putchar('-', p);
-		else if (((int)ft_strlen(x) + 1) < flag->n1)
-			{
-				print_only_space(p, (flag->n1 - ft_strlen(x) - 1));
+		if (((ft_strlen(x) + 1) >= flag->n1) || (flag->minus == 1) 
+			|| flag->zero == 1)
 				ft_putchar('-', p);
+		else if (flag->minus == 0 && flag->zero == 0)
+			{
+					print_only_c(p, (flag->n1 - ft_strlen(x) - 1), ' ');
+					ft_putchar('-', p);
 			}
+		if (flag->zero == 1)
+			print_only_c(p, (flag->n1 - ft_strlen(x) - 1), '0');
 		ft_putstr(x, p, ft_strlen(x));
+		if (flag->minus == 1)
+			print_only_c(p, (flag->n1 - ft_strlen(x) - 1), ' ');
 	}
 	else if (flag->n1 != 0 && flag->zero == 0)
 		handle_1(flag->n1, p, x, flag, ' ');
-	//else if (flag->n1 != 0 && flag->zero == 1)//ATTENTION STR
-		//handle_1(flag->n1, p, x, flag, '0');//! pas utilise, cherche derniere faute du test
+	else if (flag->n1 != 0 && flag->zero == 1)
+			handle_1(flag->n1, p, x, flag, '0');
 	else
 		ft_putstr(x, p, ft_strlen(x));
 	*i+=1;

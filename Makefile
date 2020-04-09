@@ -1,3 +1,4 @@
+
 NAME = libftprintf.a
 FLAGS = -Wall -Wextra -Werror
 LFT_SRC = libft
@@ -11,8 +12,8 @@ SRCS = ft_printf.c \
 	   specifier_pointer.c \
 	   flags_zero.c \
 	   flags_percentage.c \
-	   ft_utils.c
-
+	   ft_utils.c \
+	main.c
 OBJS = $(SRCS:.c=.o)
 all: $(LIBFT) $(NAME)
 $(NAME): $(OBJS)

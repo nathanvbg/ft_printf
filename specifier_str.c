@@ -34,7 +34,7 @@ void	specifier_str_2(va_list arg, int *p, int *i, t_flag *flag)
 	else if (flag->point != 0)
 	{
 		if (flag->n2 == 0 && flag->n1 != 0)
-			print_only_space(p, flag->n1);
+			print_only_c(p, flag->n1, ' ');
 		else if (flag->n1 != 0)
 			handle_2(flag->n1, p, x, flag);
 		else

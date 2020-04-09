@@ -16,7 +16,7 @@ void	check_flags_0(char *str,int *i, t_flag *flag)
 {
 	if (str[*i] == '0')
 	{
-		flag->zero = 0;
+		flag->zero = 1;
 		*i += 1;
 	}
 }

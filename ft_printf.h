@@ -1,4 +1,3 @@
-/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
@@ -9,6 +8,8 @@
 /*   Updated: 2020/03/04 16:41:20 by nverbrug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// refaire le f1
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
@@ -54,12 +55,12 @@ void			specifier_str(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_str_2(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_int(va_list arg, int *p, int *i, t_flag *flag);
 void			tri_flags(int *p, int *i, t_flag *flag, char *x);
-void			specifier_int_2(int *p, int *i, t_flag *flag, char *x);
+void			no_point(int *p, int *i, t_flag *flag, char *x);
 //void			specifier_int_3(int *p, int *i, t_flag *flag, char *x);
 void			int_point_1(int *p, int *i, t_flag *flag, char *x);
 void			handle_1(int nb, int *p, char *x, t_flag *flag, char c);
 void			handle_2(int nb, int *p, char *x, t_flag *flag);
-void			print_only_space(int *p, int i);
+void			print_only_c(int *p, int i, char c);
 void			print_space(int nb, int *p, char x, t_flag *flag);
 //void			handle_6(int nb, int *p, int x, t_flag *flag);
 //void			handle_7(int *p, int x, t_flag *flag);

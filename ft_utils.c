@@ -70,17 +70,16 @@ void	handle_2(int nb, int *p, char *x, t_flag *flag)
 	}
 }
 
-void	print_only_space(int *p, int i)//pour str
+void	print_only_c(int *p, int i, char c)
 {
 	if (i != 0)
 	{
 		while (i > 0)
 		{
-			ft_putchar(' ', p);
+			ft_putchar(c, p);
 			i -= 1;
 		}
 	}
-	//else if (flag->n1 == 0)
 }
 
 /*

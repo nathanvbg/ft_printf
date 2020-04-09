@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, int start, int len)
 {
-	size_t	i;
+	int	i;
 	char	*str;
 
 	if (s == NULL)

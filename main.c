@@ -24,8 +24,8 @@ int		main(void)
 
 	//ft_printf("=%d\n", ft_printf("%.6d", 3));
 
-	printf("=%d\n\n", printf("%-10.15d\n", -123));
-	printf("=%d\n\n", printf("%-15.10d\n", -123));
+	ft_printf("=%d\n\n", ft_printf("%05d\n", 23));
+	printf("=%d\n\n", printf("%5d\n", 23));
 
 return(0);
 }
