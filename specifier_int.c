@@ -36,7 +36,12 @@ void	tri_flags(int *p, int *i, t_flag *flag, char *x, int len)
 {
 	if (flag->minus == 1)
 		flag->zero = 0;
-	if (flag->point == 0)
+	if (flag->point == 1 && flag->n2 == 0)
+	{
+		print_only_c(p, flag->n1, ' ');
+		*i += 1;
+	}
+	else if (flag->point == 0)
 		no_point(p, i, flag, x, len);
 	else if (flag->point != 0)
 		{
