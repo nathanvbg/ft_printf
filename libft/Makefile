@@ -20,6 +20,7 @@ SRC = ft_atoi.c \
 	ft_isdigit.c \
 	ft_isprint.c \
 	ft_itoa.c \
+	ft_itoa_base.c \
 	ft_memccpy.c \
 	ft_memchr.c \
 	ft_memcmp.c \
@@ -31,7 +32,6 @@ SRC = ft_atoi.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
 	ft_putnbr.c \
-	ft_putnbr_u.c \
 	ft_putstr_fd.c \
 	ft_putstr.c \
 	ft_split.c \
@@ -49,9 +49,7 @@ SRC = ft_atoi.c \
 	ft_substr.c \
 	ft_tolower.c \
 	ft_toupper.c \
-	ft_utoh.c \
-	ft_stoh.c \
-	ft_utohex.c \
+
 
 NAME = libft.a
 OBJS = $(SRC:%.c=%.o)

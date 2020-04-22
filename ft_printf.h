@@ -46,9 +46,7 @@ void			check_flags_1(va_list arg, char *str, int *i, t_flag *flag);
 void			check_flags_2(char *str, int *i, t_flag *flag);
 void			check_flags_3(va_list arg, char *str, int *i, t_flag *flag);
 void			check_specifier(va_list arg, char *str, int *p, int *i, t_flag *flag);
-void			specifier_uint(va_list arg, int *p, int *i);
-void			specifier_x(va_list arg, int *p, int *i);
-void			specifier_hex(va_list arg, int *p, int *i);
+void			specifier_uint(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_char(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_char_2(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_str(va_list arg, int *p, int *i, t_flag *flag);
@@ -62,12 +60,6 @@ void			handle_1(int nb, int *p, char *x, t_flag *flag, char c);
 void			handle_2(int nb, int *p, char *x, t_flag *flag);
 void			print_only_c(int *p, int nb, char c);
 void			print_space(int nb, int *p, char x, t_flag *flag);
-void			specifier_pointer(va_list arg, int *p, int *i);
-void			flags_percentage(int *p, int *i);
-void			flags_zero(va_list arg, char *str, int *p, int *i);
-void			nbr_zero_int(va_list arg, char *str, int *p, int *i, int n);
-void			nbr_zero_hex(va_list arg, char *str, int *p, int *i, int n);
-int				count_nbr(int n, int base);
 void			ft_free(char** str);
 
 #endif
