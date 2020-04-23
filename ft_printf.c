@@ -33,33 +33,27 @@ void	ft_init_flag(t_flag *flag)
 	flag->n2 = 0;
 }
 
-void	ft_init_compteur(t_compteur *compteur)
-{
-	compteur->i = 0;
-	compteur->p = 0;
-}
-
 int		ft_printf(char *fmt, ...)
 {
 	va_list arg;
 	t_flag flag;
-	t_compteur compteur;
 
 	va_start(arg, fmt);
-	ft_init_compteur(&compteur);
-	while (fmt[compteur.i])
+	flag.i = 0;
+	flag.p = 0;
+	while (fmt[flag.i])
 	{
 		ft_init_flag(&flag);
-		if (fmt[compteur.i] == '%')
+		if (fmt[flag.i] == '%')
 		{
-			check_flags(arg, fmt, &compteur.p, &compteur.i, &flag);
+			check_flags(arg, fmt, &flag.p, &flag.i, &flag);
 		}
 		else
 		{
-			ft_putchar(fmt[compteur.i], &compteur.p);
-			compteur.i++;
+			ft_putchar(fmt[flag.i], &flag.p);
+			flag.i++;
 		}
 	}
 	va_end(arg);
-	return(compteur.p);
+	return(flag.p);
 }

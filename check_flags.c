@@ -93,5 +93,4 @@ void	check_flags(va_list arg, char *str, int *p, int *i, t_flag *flag)
 	check_flags_2(str, i, flag);
 	check_flags_3(arg, str, i, flag);
 	check_specifier(arg, str, p, i, flag);
-	//printf("n1 = %d\nn2 = %d\n zero = %d\n", flag->n1, flag->n2, flag->zero);
 }

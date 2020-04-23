@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "ft_printf.h"
 
 void	specifier_int(va_list arg, int *p, int *i, t_flag *flag)
@@ -37,10 +35,10 @@ void	specifier_int(va_list arg, int *p, int *i, t_flag *flag)
 		ft_free(&x);
 	}
 	len = ft_strlen(x);
-	tri_flags(p, i, flag, x, len);
+	int_tri_flags(p, i, flag, x, len);
 }
 
-void	tri_flags(int *p, int *i, t_flag *flag, char *x, int len)
+void	int_tri_flags(int *p, int *i, t_flag *flag, char *x, int len)
 {
 	if (flag->minus == 1)
 		flag->zero = 0;
@@ -50,7 +48,7 @@ void	tri_flags(int *p, int *i, t_flag *flag, char *x, int len)
 		*i += 1;
 	}
 	else if (flag->point == 0)
-		no_point(p, i, flag, x, len);
+		int_no_point(p, i, flag, x, len);
 	else if (flag->point != 0)
 		{
 			if (flag->minus == 0)
@@ -60,7 +58,7 @@ void	tri_flags(int *p, int *i, t_flag *flag, char *x, int len)
 		}
 }
 
-void	no_point(int *p, int *i, t_flag *flag, char *x, int len)
+void	int_no_point(int *p, int *i, t_flag *flag, char *x, int len)
 {
 	if (flag->neg == 1)
 	{
@@ -79,9 +77,9 @@ void	no_point(int *p, int *i, t_flag *flag, char *x, int len)
 			print_only_c(p, (flag->n1 - len - 1), ' ');
 	}
 	else if (flag->n1 != 0 && flag->zero == 0)
-		handle_1(flag->n1, p, x, flag, ' ');
+		str_no_point(flag->n1, p, x, flag, ' ');
 	else if (flag->n1 != 0 && flag->zero == 1)
-			handle_1(flag->n1, p, x, flag, '0');
+		str_no_point(flag->n1, p, x, flag, '0');
 	else
 		ft_putstr(x, p, len);
 	*i+=1;
@@ -99,7 +97,7 @@ void	int_point_plus(int *p, int *i, t_flag *flag, char *x, int len)
 		print_only_c(p, (flag->n1 - len - 1), ' ');
 	if (flag->neg == 1)
 		ft_putchar('-', p);
-	handle_1(flag->n2, p, x, flag, '0');
+	str_no_point(flag->n2, p, x, flag, '0');
 	*i += 1;
 }
 
@@ -110,7 +108,7 @@ void	int_point_minus(int *p, int *i, t_flag *flag, char *x, int len)
 	if (flag->neg == 1)
 		ft_putchar('-', p);
 	flag->minus = 0;
-	handle_1(flag->n2, p, x, flag, '0');
+	str_no_point(flag->n2, p, x, flag, '0');
 	if (flag->neg == 0)
 		print_only_c(p, (flag->n1 - len), ' ');
 	else

@@ -15,17 +15,17 @@
 void	check_specifier(va_list arg, char *str, int *p, int *i, t_flag *flag)
 {
 	if (str[*i] == '%')
-		specifier_percentage(p, i, flag);
+		specifier_perc(p, i, flag);
 	else
 	{
 		str[*i] == 'd' ? specifier_int(arg, p, i, flag) : 0;
 		str[*i] == 'i' ? specifier_int(arg, p, i, flag) : 0;
-		str[*i] == 'u' ? specifier_uint(arg, p, i, flag) : 0;
+		str[*i] == 'u' ? specifier_u(arg, p, i, flag) : 0;
 		str[*i] == 'c' ? specifier_char(arg, p, i, flag) : 0;
 		str[*i] == 's' ? specifier_str(arg, p, i, flag) : 0;
 		str[*i] == 'x' ? specifier_x(arg, p, i, flag) : 0;
-		str[*i] == 'X' ? specifier_hex(arg, p, i, flag) : 0;
-		str[*i] == 'p' ? specifier_pointer(arg, p, i, flag) : 0;
+		str[*i] == 'X' ? specifier_X(arg, p, i, flag) : 0;
+		str[*i] == 'p' ? specifier_p(arg, p, i, flag) : 0;
 	}
 }
 

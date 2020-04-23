@@ -2,7 +2,7 @@
 
 #include "ft_printf.h"
 
-void	specifier_uint(va_list arg, int *p, int *i, t_flag *flag)
+void	specifier_u(va_list arg, int *p, int *i, t_flag *flag)
 {
 	char			*x;
 	unsigned int	nb;
@@ -17,7 +17,7 @@ void	specifier_uint(va_list arg, int *p, int *i, t_flag *flag)
 	if (!(x = ft_itoa_base(nb, "0123456789", 10)))
 		ft_free(&x);
 	len = ft_strlen(x);
-	tri_flags(p, i, flag, x, len);
+	int_tri_flags(p, i, flag, x, len);
 }
 
 void	specifier_x(va_list arg, int *p, int *i, t_flag *flag)
@@ -30,10 +30,10 @@ void	specifier_x(va_list arg, int *p, int *i, t_flag *flag)
 	if (!(x = ft_itoa_base(nb, "0123456789abcdef", 16)))
 		ft_free(&x);
 	len = ft_strlen(x);
-	tri_flags(p, i, flag, x, len);
+	int_tri_flags(p, i, flag, x, len);
 }
 
-void	specifier_hex(va_list arg, int *p, int *i, t_flag *flag)
+void	specifier_X(va_list arg, int *p, int *i, t_flag *flag)
 {
 	char			*x;
 	unsigned int	nb;//unsigned int?
@@ -43,10 +43,10 @@ void	specifier_hex(va_list arg, int *p, int *i, t_flag *flag)
 	if (!(x = ft_itoa_base(nb, "0123456789ABCDEF", 16)))
 		ft_free(&x);
 	len = ft_strlen(x);
-	tri_flags(p, i, flag, x, len);
+	int_tri_flags(p, i, flag, x, len);
 }
 
-void	specifier_pointer(va_list arg, int *p, int *i, t_flag *flag)
+void	specifier_p(va_list arg, int *p, int *i, t_flag *flag)
 {
 	char				*x;
 	unsigned long long	nb;
@@ -70,7 +70,7 @@ void	specifier_pointer(va_list arg, int *p, int *i, t_flag *flag)
 	*i += 1;
 }
 
-void	specifier_percentage(int *p, int *i, t_flag *flag)
+void	specifier_perc(int *p, int *i, t_flag *flag)
 {
 	if (flag->zero == 1 && flag->minus == 0)
 		print_only_c(p, (flag->n1 - 1), '0');

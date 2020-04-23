@@ -12,6 +12,19 @@
 
 #include "ft_printf.h"
 
+void	specifier_char(va_list arg, int *p, int *i, t_flag *flag)
+{
+	char x;// unsigned char dans d autres travaux, pq..?
+
+	x = (char)va_arg(arg, int);//??? char int ???
+	if (flag->minus == 0 && flag->n1 != 0)
+		print_only_c(p, (flag->n1 - 1), ' ');
+	ft_putchar(x, p);
+	if (flag->minus == 1 && flag->n1 != 0)
+		print_only_c(p, (flag->n1 - 1), ' ');
+	*i += 1;
+}
+
 void	specifier_str(va_list arg, int *p, int *i, t_flag *flag)
 {
 	char *x;
@@ -20,9 +33,9 @@ void	specifier_str(va_list arg, int *p, int *i, t_flag *flag)
 	if (flag->point == 0)
 	{
 		if (flag->n1 != 0 && flag->zero == 0)
-			handle_1(flag->n1, p, x, flag, ' ');
+			str_no_point(flag->n1, p, x, flag, ' ');
 		else if (flag->n1 != 0 && flag->zero == 1)
-			handle_1(flag->n1, p, x, flag, '0');
+			str_no_point(flag->n1, p, x, flag, '0');
 		else
 			ft_putstr(x, p, ft_strlen(x));
 	}
@@ -31,7 +44,7 @@ void	specifier_str(va_list arg, int *p, int *i, t_flag *flag)
 		if (flag->n2 == 0 && flag->n1 != 0)
 			print_only_c(p, flag->n1, ' ');
 		else if (flag->n1 != 0 && flag->n2 != 0)
-			handle_2(flag->n1, p, x, flag);
+			str_point(flag->n1, p, x, flag);
 		else if (flag->n2 > 0)
 			ft_putstr(x, p, flag->n2);
 		else if (flag->n2 < 0)
@@ -40,7 +53,7 @@ void	specifier_str(va_list arg, int *p, int *i, t_flag *flag)
 	*i += 1;
 }
 
-void	handle_1(int nb, int *p, char *x, t_flag *flag, char c)
+void	str_no_point(int nb, int *p, char *x, t_flag *flag, char c)
 {
 	if (flag->minus == 0)
 		print_only_c(p, (nb - ft_strlen(x)), c);
@@ -49,7 +62,7 @@ void	handle_1(int nb, int *p, char *x, t_flag *flag, char c)
 		print_only_c(p, (nb - ft_strlen(x)), c);
 }
 
-void	handle_2(int nb, int *p, char *x, t_flag *flag)
+void	str_point(int nb, int *p, char *x, t_flag *flag)
 {
 	if (flag->n2 > ft_strlen(x) || flag->n2 < 0)
 		flag->n2 = ft_strlen(x);
