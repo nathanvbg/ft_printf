@@ -52,8 +52,13 @@ void	specifier_pointer(va_list arg, int *p, int *i, t_flag *flag)
 	unsigned long long	nb;
 
 	nb = va_arg(arg, unsigned long long);
-	if ((x = ft_itoa_base(nb, "0123456789abcdef", 16)) == NULL)
+	if (nb == 0 && flag->point == 1)
+		x = "";
+	else
+	{
+		if ((x = ft_itoa_base(nb, "0123456789abcdef", 16)) == NULL)
 			ft_free(&x);
+	}
 	if (flag->minus == 0)
 		print_only_c(p, (flag->n1 - ft_strlen(x) - 2), ' ');
 	ft_putchar('0', p);
@@ -64,7 +69,6 @@ void	specifier_pointer(va_list arg, int *p, int *i, t_flag *flag)
 	*i += 1;
 }
 
-/*
 void	specifier_percentage(int *p, int *i, t_flag *flag)
 {
 	if (flag->zero == 1 && flag->minus == 0)
@@ -78,4 +82,3 @@ void	specifier_percentage(int *p, int *i, t_flag *flag)
 		print_only_c(p, (flag->n1 - 1), ' ');
 	*i += 1;
 }
-*/

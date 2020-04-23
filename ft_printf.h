@@ -50,7 +50,7 @@ void			specifier_uint(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_x(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_hex(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_pointer(va_list arg, int *p, int *i, t_flag *flag);
-//void			specifier_percentage(int *p, int *i, t_flag *flag);
+void			specifier_percentage(int *p, int *i, t_flag *flag);
 void			specifier_char(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_char_2(va_list arg, int *p, int *i, t_flag *flag);
 void			specifier_str(va_list arg, int *p, int *i, t_flag *flag);

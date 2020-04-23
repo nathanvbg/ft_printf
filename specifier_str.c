@@ -57,7 +57,6 @@ void	handle_2(int nb, int *p, char *x, t_flag *flag)
 	if (flag->minus == 1)
 		print_only_c(p, (nb - flag->n2), ' ');
 }
-
 void	print_only_c(int *p, int nb, char c)
 {
 	if (nb > 0)

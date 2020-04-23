@@ -41,7 +41,6 @@ static void *a12;
 */
 ft_printf("=%d\n\n", ft_printf("%s%s\n", "hello", "world"
 ));
-printf("=%d\n\n", printf("%s%s\n", "hello", "world"
-));
+//printf("=%d\n\n", printf("%s%s\n", "hello", "world"));
 return(0);
 }
