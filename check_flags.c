@@ -32,7 +32,7 @@ void	check_flags_1(va_list arg, char *str, int *i, t_flag*flag)
 		}
 		if (str[*i] == '*')
 		{
-			flag->n1 = va_arg(arg, int);//star1
+			flag->n1 = va_arg(arg, int);
 			*i += 1;
 		}
 		while (str[*i] >= '0' && str[*i] <= '9')
@@ -83,10 +83,20 @@ void	check_flags(va_list arg, char *str, int *p, int *i, t_flag *flag)
 {
 	*i = *i + 1;
 
-	check_flags_0(str, i,flag);
+	check_flags_0(str, i, flag);
 	check_flags_1(arg, str, i, flag);
 	check_flags_2(str, i, flag);
 	check_flags_3(arg, str, i, flag);
 
 	check_specifier(arg, str, p, i, flag);
 }
+/*
+void	handle_1(int nb, int *p, char *x, t_flag *flag, char c)
+{
+	if (flag->minus == 0)
+		print_only_c(p, (nb - ft_strlen(x)), c);
+	ft_putstr(x, p, ft_strlen(x));
+	if (flag->minus == 1)
+		print_only_c(p, (nb - ft_strlen(x)), c);
+}
+*/

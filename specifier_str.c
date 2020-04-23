@@ -14,11 +14,6 @@
 
 void	specifier_str(va_list arg, int *p, int *i, t_flag *flag)
 {
-		specifier_str_2(arg, p, i, flag);//useless
-}
-
-void	specifier_str_2(va_list arg, int *p, int *i, t_flag *flag)
-{
 	char *x;
 
 	x = va_arg(arg, char*);
@@ -27,7 +22,7 @@ void	specifier_str_2(va_list arg, int *p, int *i, t_flag *flag)
 		if (flag->n1 != 0 && flag->zero == 0)
 			handle_1(flag->n1, p, x, flag, ' ');
 		else if (flag->n1 != 0 && flag->zero == 1)
-			handle_1(flag->n1, p, x, flag, '0');//! pas utilise, cherche derniere faute du test
+			handle_1(flag->n1, p, x, flag, '0');
 		else
 			ft_putstr(x, p, ft_strlen(x));
 	}
@@ -41,4 +36,36 @@ void	specifier_str_2(va_list arg, int *p, int *i, t_flag *flag)
 			ft_putstr(x, p, flag->n2);
 	}
 	*i += 1;
+}
+
+void	handle_1(int nb, int *p, char *x, t_flag *flag, char c)
+{
+	if (flag->minus == 0)
+		print_only_c(p, (nb - ft_strlen(x)), c);
+	ft_putstr(x, p, ft_strlen(x));
+	if (flag->minus == 1)
+		print_only_c(p, (nb - ft_strlen(x)), c);
+}
+
+void	handle_2(int nb, int *p, char *x, t_flag *flag)
+{
+	if (flag->n2 > ft_strlen(x))
+		flag->n2 = ft_strlen(x);
+	if (flag->minus == 0)
+		print_only_c(p, (nb - flag->n2), ' ');
+	ft_putstr(x, p, flag->n2);
+	if (flag->minus == 1)
+		print_only_c(p, (nb - flag->n2), ' ');
+}
+
+void	print_only_c(int *p, int nb, char c)
+{
+	if (nb > 0)
+	{
+		while (nb > 0)
+		{
+			ft_putchar(c, p);
+			nb -= 1;
+		}
+	}
 }

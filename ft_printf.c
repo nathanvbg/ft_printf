@@ -12,6 +12,16 @@
 
 #include "ft_printf.h"
 
+void	ft_free(char **str)
+{
+	if (*str)
+	{
+		free(*str);
+		*str = NULL;
+	}
+//	return (i);
+}
+
 void	ft_init_flag(t_flag *flag)
 {
 	flag->zero = 0;
@@ -51,10 +61,5 @@ int		ft_printf(char *fmt, ...)
 		}
 	}
 	va_end(arg);
-
-
-//	printf("%d\n%d\n%d\n%d\n%d\n", flag.minus, flag.star1, flag.n1, flag.star2, flag.n2);
-
-
 	return(compteur.p);
 }

@@ -48,19 +48,34 @@ void	specifier_hex(va_list arg, int *p, int *i, t_flag *flag)
 
 void	specifier_pointer(va_list arg, int *p, int *i, t_flag *flag)
 {
-	char	*x;
-	size_t	nb;//unsigned int?
-	int		len;
+	char				*x;
+	unsigned long long	nb;
 
-	nb = va_arg(arg, size_t);
-	if (!(x = ft_itoa_base(nb, "0123456789abcdef", 18)))
-		ft_free(&x);
-	len = ft_strlen(x);
-	//if ((flag->n1 > len) && (flag->n1 > flag->n2)) 
-	//else
-	//{
-		ft_putchar('0', p);
-		ft_putchar('x', p);
-		tri_flags(p, i, flag, x, len);
-	//}
+	nb = va_arg(arg, unsigned long long);
+	if ((x = ft_itoa_base(nb, "0123456789abcdef", 16)) == NULL)
+			ft_free(&x);
+	if (flag->minus == 0)
+		print_only_c(p, (flag->n1 - ft_strlen(x) - 2), ' ');
+	ft_putchar('0', p);
+	ft_putchar('x', p);
+	ft_putstr(x, p, ft_strlen(x));
+	if (flag->minus == 1)
+		print_only_c(p, (flag->n1 - ft_strlen(x) - 2), ' ');
+	*i += 1;
 }
+
+/*
+void	specifier_percentage(int *p, int *i, t_flag *flag)
+{
+	if (flag->zero == 1 && flag->minus == 0)
+		print_only_c(p, (flag->n1 - 1), '0');
+	if (flag->zero == 0 && flag->minus == 0)
+		print_only_c(p, (flag->n1 - 1), ' ');
+	ft_putchar('%', p);
+	if (flag->zero == 1 && flag->minus == 1)
+		print_only_c(p, (flag->n1 - 1), '0');
+	if (flag->zero == 0 && flag->minus == 1)
+		print_only_c(p, (flag->n1 - 1), ' ');
+	*i += 1;
+}
+*/

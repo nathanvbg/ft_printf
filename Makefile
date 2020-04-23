@@ -9,7 +9,6 @@ SRCS = ft_printf.c \
 	   specifier_int.c \
 	   specifier_char.c\
 	   specifier_str.c \
-	   ft_utils.c \
 	specifier_uint.c \
 	main.c
 OBJS = $(SRCS:.c=.o)
