@@ -63,6 +63,7 @@ void	specifier_pointer(va_list arg, int *p, int *i, t_flag *flag)
 		print_only_c(p, (flag->n1 - ft_strlen(x) - 2), ' ');
 	ft_putchar('0', p);
 	ft_putchar('x', p);
+	print_only_c(p, (flag->n2 - ft_strlen(x)), '0');
 	ft_putstr(x, p, ft_strlen(x));
 	if (flag->minus == 1)
 		print_only_c(p, (flag->n1 - ft_strlen(x) - 2), ' ');

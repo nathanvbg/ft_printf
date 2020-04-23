@@ -26,8 +26,16 @@ void	specifier_int(va_list arg, int *p, int *i, t_flag *flag)
 		flag->neg = 1;
 		nb = -nb;
 	}
-	if (!(x = ft_itoa(nb)))
+	if (nb == INT_MIN)
+	{
+		if ((x = ft_strdup("2147483648")) == NULL)
+			(ft_free(&x));
+	}
+	else
+	{
+		if (!(x = ft_itoa(nb)))
 		ft_free(&x);
+	}
 	len = ft_strlen(x);
 	tri_flags(p, i, flag, x, len);
 }
@@ -85,9 +93,9 @@ void	int_point_plus(int *p, int *i, t_flag *flag, char *x, int len)
 		print_only_c(p, (flag->n1 - flag->n2), ' ');
 	if((flag->n1 > flag->n2) && (flag->n2 > len) && (flag->neg == 1))
 		print_only_c(p, (flag->n1 - flag->n2 - 1), ' ');
-	if ((flag->n1 > len) && (flag->n2 < len) && (flag->neg == 0))
+	if ((flag->n1 > len) && (flag->n2 <= len) && (flag->neg == 0))
 		print_only_c(p, (flag->n1 - len), ' ');
-	if ((flag->n1 > len) && (flag->n2 < len )&& flag->neg == 1)
+	if ((flag->n1 > len) && (flag->n2 <= len ) && flag->neg == 1)
 		print_only_c(p, (flag->n1 - len - 1), ' ');
 	if (flag->neg == 1)
 		ft_putchar('-', p);

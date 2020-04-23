@@ -30,10 +30,12 @@ void	specifier_str(va_list arg, int *p, int *i, t_flag *flag)
 	{
 		if (flag->n2 == 0 && flag->n1 != 0)
 			print_only_c(p, flag->n1, ' ');
-		else if (flag->n1 != 0)
+		else if (flag->n1 != 0 && flag->n2 != 0)
 			handle_2(flag->n1, p, x, flag);
-		else
+		else if (flag->n2 > 0)
 			ft_putstr(x, p, flag->n2);
+		else if (flag->n2 < 0)
+			ft_putstr(x, p, ft_strlen(x));
 	}
 	*i += 1;
 }
@@ -49,7 +51,7 @@ void	handle_1(int nb, int *p, char *x, t_flag *flag, char c)
 
 void	handle_2(int nb, int *p, char *x, t_flag *flag)
 {
-	if (flag->n2 > ft_strlen(x))
+	if (flag->n2 > ft_strlen(x) || flag->n2 < 0)
 		flag->n2 = ft_strlen(x);
 	if (flag->minus == 0)
 		print_only_c(p, (nb - flag->n2), ' ');

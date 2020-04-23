@@ -39,8 +39,10 @@ static void *a12;
 	ft_printf("=%d\n\n", ft_printf("%p\n", &a01));
 	printf("=%d\n\n", printf("%5p\n", &a01));
 */
-ft_printf("=%d\n\n", ft_printf("%s%s\n", "hello", "world"
-));
-//printf("=%d\n\n", printf("%s%s\n", "hello", "world"));
+//ft_printf("=%d\n\n", ft_printf("%.*s\n", -2, "world"));
+ft_printf("=%d\n\n", ft_printf("%4.2i", 42));
+printf("=%d\n\n", printf("%4.2i", 42));
+//printf("=%d\n\n", printf("%04.2i", 42));
+
 return(0);
 }
