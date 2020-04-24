@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-void	ft_free(char **str)
+int		ft_free(char **str, int i)
 {
 	if (*str)
 	{
 		free(*str);
 		*str = NULL;
 	}
-//	return (i);
+	return (i);
 }
 
 void	ft_init_flag(t_flag *flag)
@@ -46,7 +46,8 @@ int		ft_printf(char *fmt, ...)
 		ft_init_flag(&flag);
 		if (fmt[flag.i] == '%')
 		{
-			check_flags(arg, fmt, &flag.p, &flag.i, &flag);
+			if (check_flags(arg, fmt, &flag.p, &flag.i, &flag) == -1)
+				return (-1);
 		}
 		else
 		{

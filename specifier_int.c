@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	specifier_int(va_list arg, int *p, int *i, t_flag *flag)
+int		specifier_int(va_list arg, int *p, int *i, t_flag *flag)
 {
 	int nb;
 	char *x;
@@ -27,15 +27,16 @@ void	specifier_int(va_list arg, int *p, int *i, t_flag *flag)
 	if (nb == INT_MIN)
 	{
 		if ((x = ft_strdup("2147483648")) == NULL)
-			(ft_free(&x));
+			(ft_free(&x, -1));
 	}
 	else
 	{
 		if (!(x = ft_itoa(nb)))
-		ft_free(&x);
+			ft_free(&x, -1);
 	}
 	len = ft_strlen(x);
 	int_tri_flags(p, i, flag, x, len);
+	return (ft_strncmp(x, "", 1) != 0 ? ft_free(&x, 0) : 0);
 }
 
 void	int_tri_flags(int *p, int *i, t_flag *flag, char *x, int len)

@@ -2,7 +2,7 @@
 
 #include "ft_printf.h"
 
-void	specifier_u(va_list arg, int *p, int *i, t_flag *flag)
+int		specifier_u(va_list arg, int *p, int *i, t_flag *flag)
 {
 	char			*x;
 	unsigned int	nb;
@@ -15,12 +15,13 @@ void	specifier_u(va_list arg, int *p, int *i, t_flag *flag)
 		nb = -nb;
 	}
 	if (!(x = ft_itoa_base(nb, "0123456789", 10)))
-		ft_free(&x);
+		ft_free(&x, -1);
 	len = ft_strlen(x);
 	int_tri_flags(p, i, flag, x, len);
+	return (ft_strncmp(x, "", 1) != 0 ? ft_free(&x, 0) : 0);
 }
 
-void	specifier_x(va_list arg, int *p, int *i, t_flag *flag)
+int		specifier_x(va_list arg, int *p, int *i, t_flag *flag)
 {
 	char			*x;
 	unsigned int	nb;//unsigned int?
@@ -28,12 +29,13 @@ void	specifier_x(va_list arg, int *p, int *i, t_flag *flag)
 
 	nb = va_arg(arg, unsigned int);
 	if (!(x = ft_itoa_base(nb, "0123456789abcdef", 16)))
-		ft_free(&x);
+		ft_free(&x, -1);
 	len = ft_strlen(x);
 	int_tri_flags(p, i, flag, x, len);
+	return (ft_strncmp(x, "", 1) != 0 ? ft_free(&x, 0) : 0);
 }
 
-void	specifier_X(va_list arg, int *p, int *i, t_flag *flag)
+int		specifier_X(va_list arg, int *p, int *i, t_flag *flag)
 {
 	char			*x;
 	unsigned int	nb;//unsigned int?
@@ -41,12 +43,13 @@ void	specifier_X(va_list arg, int *p, int *i, t_flag *flag)
 
 	nb = va_arg(arg, unsigned int);
 	if (!(x = ft_itoa_base(nb, "0123456789ABCDEF", 16)))
-		ft_free(&x);
+		ft_free(&x, -1);
 	len = ft_strlen(x);
 	int_tri_flags(p, i, flag, x, len);
+	return (ft_strncmp(x, "", 1) != 0 ? ft_free(&x, 0) : 0);
 }
 
-void	specifier_p(va_list arg, int *p, int *i, t_flag *flag)
+int		specifier_p(va_list arg, int *p, int *i, t_flag *flag)
 {
 	char				*x;
 	unsigned long long	nb;
@@ -57,7 +60,7 @@ void	specifier_p(va_list arg, int *p, int *i, t_flag *flag)
 	else
 	{
 		if ((x = ft_itoa_base(nb, "0123456789abcdef", 16)) == NULL)
-			ft_free(&x);
+			ft_free(&x, -1);
 	}
 	if (flag->minus == 0)
 		print_only_c(p, (flag->n1 - ft_strlen(x) - 2), ' ');
@@ -68,9 +71,10 @@ void	specifier_p(va_list arg, int *p, int *i, t_flag *flag)
 	if (flag->minus == 1)
 		print_only_c(p, (flag->n1 - ft_strlen(x) - 2), ' ');
 	*i += 1;
+	return (ft_strncmp(x, "", 1) != 0 ? ft_free(&x, 0) : 0);
 }
 
-void	specifier_perc(int *p, int *i, t_flag *flag)
+int		specifier_perc(int *p, int *i, t_flag *flag)
 {
 	if (flag->zero == 1 && flag->minus == 0)
 		print_only_c(p, (flag->n1 - 1), '0');
@@ -82,4 +86,5 @@ void	specifier_perc(int *p, int *i, t_flag *flag)
 	if (flag->zero == 0 && flag->minus == 1)
 		print_only_c(p, (flag->n1 - 1), ' ');
 	*i += 1;
+	return (0);
 }

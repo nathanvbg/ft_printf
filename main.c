@@ -21,28 +21,7 @@
 
 int		main(void)
 {
-	//static char	a01;
-/*static unsigned char a02;
-static short a03;
-static unsigned short a04;
-static int a05;
-static unsigned int a06;
-static long a07;
-static unsigned long a08;
-static long long a09;
-static unsigned long long a10;
-static char *a11;
-static void *a12;
-
-	//ft_printf("=%d\n", ft_printf("%.6d", 3));
-
-	ft_printf("=%d\n\n", ft_printf("%p\n", &a01));
-	printf("=%d\n\n", printf("%5p\n", &a01));
-*/
-//ft_printf("=%d\n\n", ft_printf("%.*s\n", -2, "world"));
-ft_printf("=%d\n\n", ft_printf("%4.2i", 42));
-printf("=%d\n\n", printf("%4.2i", 42));
-//printf("=%d\n\n", printf("%04.2i", 42));
-
-return(0);
+ft_printf("40:[%-c]\n", 'a');
+printf("40:[%-c]\n", 'a');
+return (0);
 }

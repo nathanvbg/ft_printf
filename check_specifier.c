@@ -12,20 +12,26 @@
 
 #include "ft_printf.h"
 
-void	check_specifier(va_list arg, char *str, int *p, int *i, t_flag *flag)
+int		check_specifier(va_list arg, char *str, int *p, int *i, t_flag *flag)
 {
 	if (str[*i] == '%')
-		specifier_perc(p, i, flag);
+		return (specifier_perc(p, i, flag));
+	else if (str[*i] == 'd')
+		return (specifier_int(arg, p, i, flag));
+	else if (str[*i] == 'i')
+		return (specifier_int(arg, p, i, flag));
+	else if (str[*i] == 'u')
+		return (specifier_u(arg, p, i, flag));
+	else if (str[*i] == 'c')
+		return (specifier_char(arg, p, i, flag));
+	else if (str[*i] == 's')
+		return (specifier_str(arg, p, i, flag));
+	else if (str[*i] == 'x')
+		return (specifier_x(arg, p, i, flag));
+	else if (str[*i] == 'X')
+		return (specifier_X(arg, p, i, flag));
+	else if (str[*i] == 'p')
+		return (specifier_p(arg, p, i, flag));
 	else
-	{
-		str[*i] == 'd' ? specifier_int(arg, p, i, flag) : 0;
-		str[*i] == 'i' ? specifier_int(arg, p, i, flag) : 0;
-		str[*i] == 'u' ? specifier_u(arg, p, i, flag) : 0;
-		str[*i] == 'c' ? specifier_char(arg, p, i, flag) : 0;
-		str[*i] == 's' ? specifier_str(arg, p, i, flag) : 0;
-		str[*i] == 'x' ? specifier_x(arg, p, i, flag) : 0;
-		str[*i] == 'X' ? specifier_X(arg, p, i, flag) : 0;
-		str[*i] == 'p' ? specifier_p(arg, p, i, flag) : 0;
-	}
+		return (0);
 }
-

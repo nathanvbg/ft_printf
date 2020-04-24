@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	specifier_char(va_list arg, int *p, int *i, t_flag *flag)
+int		specifier_char(va_list arg, int *p, int *i, t_flag *flag)
 {
 	char x;// unsigned char dans d autres travaux, pq..?
 
@@ -23,13 +23,17 @@ void	specifier_char(va_list arg, int *p, int *i, t_flag *flag)
 	if (flag->minus == 1 && flag->n1 != 0)
 		print_only_c(p, (flag->n1 - 1), ' ');
 	*i += 1;
+	return (0);
 }
 
-void	specifier_str(va_list arg, int *p, int *i, t_flag *flag)
+int		specifier_str(va_list arg, int *p, int *i, t_flag *flag)
 {
 	char *x;
 
-	x = va_arg(arg, char*);
+	x = va_arg(arg, char*);//comment securiser ? on ne securise pas ? pq SIGABRT quand je le free ? pq evrard ne le free pas ? pq ligne d en dessous ?
+	if (!x)// if (!(x = va_arg(arg, char*)))
+				//x == "(null)";
+		x = "(null)";// PQQ??
 	if (flag->point == 0)
 	{
 		if (flag->n1 != 0 && flag->zero == 0)
@@ -51,6 +55,7 @@ void	specifier_str(va_list arg, int *p, int *i, t_flag *flag)
 			ft_putstr(x, p, ft_strlen(x));
 	}
 	*i += 1;
+	return (0);
 }
 
 void	str_no_point(int nb, int *p, char *x, t_flag *flag, char c)
