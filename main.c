@@ -13,9 +13,7 @@
 
 int		main(void)
 {
-	//ft_printf("{%.*d}\n\n", 0, 42);
-	//printf("{%.*d}\n\n", 5, 123);
-	ft_printf("%20.0d\n\n", 1024);
-	printf("%20.0d\n\n", 1024);
-	return (0);
+ft_printf("%0*.%%-*.50s%--105.137d%038.158%%-45.83%" ,-166,-154,"j`YV3W(-|K'\trQ#k/\tfm,nK",961916674);
+
+return (0);
 }
