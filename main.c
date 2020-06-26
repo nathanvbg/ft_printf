@@ -9,19 +9,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// done
-// specifier : c
-// flags :-, ., *, 0(! cas avec -), %
-
-//
-// not done
-// specifier : d et i, s, u, x, X, p(mais pas bien compris
-
 #include "ft_printf.h"
 
 int		main(void)
 {
-ft_printf("40:[%-c]\n", 'a');
-printf("40:[%-c]\n", 'a');
-return (0);
+	//ft_printf("{%.*d}\n\n", 0, 42);
+	//printf("{%.*d}\n\n", 5, 123);
+	ft_printf("%20.0d\n\n", 1024);
+	printf("%20.0d\n\n", 1024);
+	return (0);
 }
