@@ -95,4 +95,6 @@ void	check_flags_3(va_list arg, char *str, int *i, t_flag*flag)
 			*i += 1;
 		}
 	}
+	if (flag->minus == 1)
+		flag->zero = 0;
 }
