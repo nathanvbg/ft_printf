@@ -13,10 +13,7 @@
 
 int		main(void)
 {
-	ft_printf("%0*.%%s\n" ,-20, "aha");
-	printf("%0*.%%s\n\n\n", -20, "aha");
-
-	ft_printf("%00183.%%-44.48d\n\n" ,2066635919);
-	printf("%00183.%%-44.48d" ,2066635919);
-return (0);
+	ft_printf("p = %d\n", ft_printf("-->|%*.0%|<--\n", 2));
+	printf("p = %d\n", printf("-->|%*.0%|<--\n", 2));
+	return (0);
 }

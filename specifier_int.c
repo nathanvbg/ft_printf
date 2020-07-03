@@ -41,8 +41,6 @@ int		specifier_int(va_list arg, int *p, int *i, t_flag *flag)
 
 void	int_tri_flags(int *p, int *i, t_flag *flag, char *x, int len)
 {
-	if (flag->minus == 1)
-		flag->zero = 0;
 	if (flag->point == 1 && flag->n2 == 0 && flag->minus == 0)
 	{
 		if (x[0] == '0' && x[1] == '\0')
@@ -104,14 +102,22 @@ void	int_point_plus(int *p, int *i, t_flag *flag, char *x, int len)
 	if ((flag->n1 > len) && (flag->n2 <= len) 
 			&& (flag->n2 >= 0)  && (flag->neg == 0))
 		print_only_c(p, (flag->n1 - len), ' ');
-	if ((flag->n1 > len) && (flag->n2 <= len ) && flag->neg == 1)
+	if (flag->n1 > len && flag->n2 <= len && flag->n2 > 0 && flag->neg == 1)
+		print_only_c(p, (flag->n1 - len - 1), ' ');
+	if (flag->n2 < 0 && flag->zero == 0 && flag->neg == 1)
 		print_only_c(p, (flag->n1 - len - 1), ' ');
 	if (flag->neg == 1)
 		ft_putchar('-', p);
-	if (flag->zero == 1 && flag->n2 < 0)
+	if (flag->n2 < 0 && flag->zero == 0 && flag->neg == 1)
+		ft_putstr(x, p, ft_strlen(x));
+	else if (flag->zero == 1 && flag->n2 < 0 && flag->neg == 1)
+		str_no_point(flag->n1 - 1, p, x, flag, '0');
+	else if (flag->zero == 1 && flag->n2 < 0 && flag->neg == 0)
 		str_no_point(flag->n1, p, x, flag, '0');
-	else
+	else if (flag->n2 > 0)
 		str_no_point(flag->n2, p, x, flag, '0');
+	else
+		str_point(flag->n1, p, x, flag);
 	*i += 1;
 }
 

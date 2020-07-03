@@ -81,8 +81,6 @@ int		specifier_perc(int *p, int *i, t_flag *flag)
 	if (flag->zero == 0 && flag->minus == 0)
 		print_only_c(p, (flag->n1 - 1), ' ');
 	ft_putchar('%', p);
-	if (flag->zero == 1 && flag->minus == 1)
-		print_only_c(p, (flag->n1 - 1), '0');
 	if (flag->zero == 0 && flag->minus == 1)
 		print_only_c(p, (flag->n1 - 1), ' ');
 	*i += 1;
