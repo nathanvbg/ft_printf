@@ -13,7 +13,7 @@
 
 int		main(void)
 {
-	ft_printf("p = %d\n", ft_printf("-->|%*.0%|<--\n", 2));
-	printf("p = %d\n", printf("-->|%*.0%|<--\n", 2));
+	ft_printf("p = %d\n", ft_printf("-->|%04.0%|<--\n"));
+	printf("p = %d\n", printf("-->|%04.0%|<--\n"));
 	return (0);
 }

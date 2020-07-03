@@ -76,8 +76,10 @@ int		specifier_p(va_list arg, int *p, int *i, t_flag *flag)
 
 int		specifier_perc(int *p, int *i, t_flag *flag)
 {
-	if (flag->zero == 1 && flag->minus == 0)
+	if (flag->zero == 1)
 		print_only_c(p, (flag->n1 - 1), '0');
+	else if (flag->zero == 1 && flag->zero_perc == 1)
+		print_only_c(p, (flag->n1 - 1), ' ');
 	if (flag->zero == 0 && flag->minus == 0)
 		print_only_c(p, (flag->n1 - 1), ' ');
 	ft_putchar('%', p);

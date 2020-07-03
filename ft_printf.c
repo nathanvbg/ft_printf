@@ -25,6 +25,7 @@ int		ft_free(char **str, int i)
 void	ft_init_flag(t_flag *flag)
 {
 	flag->zero = 0;
+	flag->zero_perc = 0;
 	flag->point = 0;
 	flag->minus = 0;
 	flag->neg = 0;

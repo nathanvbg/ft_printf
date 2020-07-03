@@ -68,17 +68,17 @@ void	check_flags_2(char *str, int *i, t_flag*flag)
 		flag->point = 1;
 		*i += 1;
 	}
-	if (str[*i] == '0')
-	{
-		flag->zero = 1;
-		*i += 1;
-	}
 }
 
 void	check_flags_3(va_list arg, char *str, int *i, t_flag*flag)
 {
 	while (ft_isdigit(str[*i]) == 1 || str[*i] == '-' || str[*i] == '*')
 	{
+		if (str[*i] == '0')
+		{
+			flag->zero_perc = 1;
+			*i += 1;
+		}
 		if (str[*i] == '-')
 		{
 			flag->minus = 1;

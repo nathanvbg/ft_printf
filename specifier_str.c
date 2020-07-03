@@ -60,7 +60,7 @@ int		specifier_str(va_list arg, int *p, int *i, t_flag *flag)
 
 void	str_no_point(int nb, int *p, char *x, t_flag *flag, char c)
 {
-	if (flag->minus == 0 || flag->n2 < 0)
+	if (flag->minus == 0) //|| flag->n2 < 0)
 		print_only_c(p, (nb - ft_strlen(x)), c);
 	ft_putstr(x, p, ft_strlen(x));
 	if (flag->minus == 1)

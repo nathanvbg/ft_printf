@@ -26,6 +26,7 @@
 typedef struct	s_flag
 {
 	int		zero;
+	int		zero_perc;
 	int		point;
 	int		percentage;
 	int		minus;
