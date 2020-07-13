@@ -37,13 +37,13 @@ typedef struct	s_flag
 	int		p;
 }				t_flag;
 
-int		ft_printf(char *cnt, ...);
-int		check_flags(va_list arg, char *str, int *p, int *i, t_flag *flag);
-void	check_flags_0(char *str, int *i, t_flag *flag);
-void	check_flags_1(va_list arg, char *str, int *i, t_flag *flag);
-void	check_flags_2(char *str, int *i, t_flag *flag);
-void	check_flags_3(va_list arg, char *str, int *i, t_flag *flag);
-int		check_specifier(va_list arg, char *str, int *p, int *i, t_flag *flag);
+int		ft_printf(const char *cnt, ...);
+int		flags(va_list arg, const char *str, int *p, int *i, t_flag *flag);
+void	check_flags_0(const char *str, int *i, t_flag *flag);
+void	check_flags_1(va_list arg, const char *str, int *i, t_flag *flag);
+void	check_flags_2(const char *str, int *i, t_flag *flag);
+void	check_flags_3(va_list arg, const char *str, int *i, t_flag *flag);
+int		specifier(va_list arg, const char *str, int *p, int *i, t_flag *flag);
 int		specifier_u(va_list arg, int *p, int *i, t_flag *flag);
 int		specifier_x(va_list arg, int *p, int *i, t_flag *flag);
 int		specifier_X(va_list arg, int *p, int *i, t_flag *flag);

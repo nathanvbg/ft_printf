@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		check_specifier(va_list arg, char *str, int *p, int *i, t_flag *flag)
+int		specifier(va_list arg, const char *str, int *p, int *i, t_flag *flag)
 {
 	if (str[*i] == '%')
 		return (specifier_perc(p, i, flag));

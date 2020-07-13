@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		check_flags(va_list arg, char *str, int *p, int *i, t_flag *flag)
+int		flags(va_list arg, const char *str, int *p, int *i, t_flag *flag)
 {
 	*i = *i + 1;
 
@@ -20,12 +20,12 @@ int		check_flags(va_list arg, char *str, int *p, int *i, t_flag *flag)
 	check_flags_1(arg, str, i, flag);
 	check_flags_2(str, i, flag);
 	check_flags_3(arg, str, i, flag);
-	if (check_specifier(arg, str, p, i, flag) == -1)
+	if (specifier(arg, str, p, i, flag) == -1)
 		return (-1);
 	return (0);
 }
 
-void	check_flags_0(char *str,int *i, t_flag *flag)
+void	check_flags_0(const char *str,int *i, t_flag *flag)
 {
 	if (str[*i] == '0')
 	{
@@ -34,7 +34,7 @@ void	check_flags_0(char *str,int *i, t_flag *flag)
 	}
 }
 
-void	check_flags_1(va_list arg, char *str, int *i, t_flag*flag)
+void	check_flags_1(va_list arg, const char *str, int *i, t_flag *flag)
 {
 	while (ft_isdigit(str[*i]) == 1 || str[*i] == '-' || str[*i] == '*')
 	{
@@ -61,7 +61,7 @@ void	check_flags_1(va_list arg, char *str, int *i, t_flag*flag)
 	}
 }
 
-void	check_flags_2(char *str, int *i, t_flag*flag)
+void	check_flags_2(const char *str, int *i, t_flag *flag)
 {
 	if (str[*i] == '.')
 	{
@@ -70,7 +70,7 @@ void	check_flags_2(char *str, int *i, t_flag*flag)
 	}
 }
 
-void	check_flags_3(va_list arg, char *str, int *i, t_flag*flag)
+void	check_flags_3(va_list arg, const char *str, int *i, t_flag *flag)
 {
 	while (ft_isdigit(str[*i]) == 1 || str[*i] == '-' || str[*i] == '*')
 	{

@@ -9,7 +9,7 @@ SRCS =	ft_printf.c \
 		check_specifier.c \
 		specifier_int.c \
 		specifier_str.c \
-		specifier_uxXp%.c \
+		specifier_rest.c \
 		main.c
 OBJS = $(SRCS:.c=.o)
 all: $(LIBFT) $(NAME)

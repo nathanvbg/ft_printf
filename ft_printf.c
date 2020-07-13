@@ -34,7 +34,7 @@ void	ft_init_flag(t_flag *flag)
 	flag->n2 = 0;
 }
 
-int		ft_printf(char *fmt, ...)
+int		ft_printf(const char *fmt, ...)
 {
 	va_list arg;
 	t_flag flag;
@@ -47,7 +47,7 @@ int		ft_printf(char *fmt, ...)
 		ft_init_flag(&flag);
 		if (fmt[flag.i] == '%')
 		{
-			if (check_flags(arg, fmt, &flag.p, &flag.i, &flag) == -1)
+			if (flags(arg, fmt, &flag.p, &flag.i, &flag) == -1)
 				return (-1);
 		}
 		else
