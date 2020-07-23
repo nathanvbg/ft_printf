@@ -6,13 +6,13 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 16:41:28 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/02/19 13:58:07 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/07/23 13:31:02 by nathanvbg        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		specifier_int(va_list arg, int *p, int *i, t_flag *flag)
+int		specifier_int(va_list arg, t_index *idx)
 {
 	int nb;
 	char *x;
@@ -21,7 +21,7 @@ int		specifier_int(va_list arg, int *p, int *i, t_flag *flag)
 	nb = va_arg(arg, int);
 	if (nb < 0)
 	{
-		flag->neg = 1;
+		idx->neg = 1;
 		nb = -nb;
 	}
 	if (nb == INT_MIN)//pq int_min pas int_max?
@@ -35,109 +35,109 @@ int		specifier_int(va_list arg, int *p, int *i, t_flag *flag)
 			ft_free(&x, -1);
 	}
 	len = ft_strlen(x);
-	int_tri_flags(p, i, flag, x, len);
+	int_tri_flags(idx, x, len);
 	return (ft_strncmp(x, "", 1) != 0 ? ft_free(&x, 0) : 0);
 }
 
-void	int_tri_flags(int *p, int *i, t_flag *flag, char *x, int len)
+void	int_tri_flags(t_index *idx, char *x, int len)
 {
-	if (flag->point == 1 && flag->n2 == 0 && flag->minus == 0)
+	if (idx->point == 1 && idx->n2 == 0 && idx->minus == 0)
 	{
 		if (x[0] == '0' && x[1] == '\0')
-			print_only_c(p, (flag->n1), ' ');
+			print_only_c(idx, (idx->n1), ' ');
 		else
 		{
-			print_only_c(p, (flag->n1 - len - flag->neg), ' ');
-			if (flag->neg == 1)
-				ft_putchar('-', p);
-			ft_putstr(x, p, len);
+			print_only_c(idx, (idx->n1 - len - idx->neg), ' ');
+			if (idx->neg == 1)
+				ft_putchar('-', &idx->p);//pq & ici?
+			ft_putstr(x, &idx->p, len);//attention
 		}
-		*i += 1;
+		idx->i += 1;
 	}
-	else if (flag->point == 0)
-		int_no_point(p, i, flag, x, len);
-	else if (flag->point != 0)
+	else if (idx->point == 0)
+		int_no_point(idx, x, len);
+	else if (idx->point != 0)
 		{
-			if (flag->minus == 0)
-				int_point_plus(p, i, flag, x, len);
+			if (idx->minus == 0)
+				int_point_plus(idx, x, len);
 			else
-				int_point_minus(p, i, flag, x, len);
+				int_point_minus(idx, x, len);
 		}
 }
 
-void	int_no_point(int *p, int *i, t_flag *flag, char *x, int len)
+void	int_no_point(t_index *idx, char *x, int len)
 {
-	if (flag->neg == 1)
+	if (idx->neg == 1)
 	{
-		if (((len + 1) >= flag->n1) || (flag->minus == 1) 
-			|| flag->zero == 1)
-				ft_putchar('-', p);
-		else if (flag->minus == 0 && flag->zero == 0)
+		if (((len + 1) >= idx->n1) || (idx->minus == 1) 
+			|| idx->zero == 1)
+				ft_putchar('-', &idx->p);
+		else if (idx->minus == 0 && idx->zero == 0)
 			{
-					print_only_c(p, (flag->n1 - len - 1), ' ');
-					ft_putchar('-', p);
+					print_only_c(idx, (idx->n1 - len - 1), ' ');
+					ft_putchar('-', &idx->p);
 			}
-		if (flag->zero == 1)
-			print_only_c(p, (flag->n1 - len - 1), '0');
-		ft_putstr(x, p, len);
-		if (flag->minus == 1)
-			print_only_c(p, (flag->n1 - len - 1), ' ');
+		if (idx->zero == 1)
+			print_only_c(idx, (idx->n1 - len - 1), '0');
+		ft_putstr(x, &idx->p, len);
+		if (idx->minus == 1)
+			print_only_c(idx, (idx->n1 - len - 1), ' ');
 	}
-	else if (flag->n1 != 0 && flag->zero == 0)
-		str_no_point(flag->n1, p, x, flag, ' ');
-	else if (flag->n1 != 0 && flag->zero == 1)
-		str_no_point(flag->n1, p, x, flag, '0');
+	else if (idx->n1 != 0 && idx->zero == 0)
+		str_no_point(idx->n1, x, ' ', idx);
+	else if (idx->n1 != 0 && idx->zero == 1)
+		str_no_point(idx->n1, x, '0', idx);
 	else
-		ft_putstr(x, p, len);
-	*i+=1;
+		ft_putstr(x, &idx->p, len);
+	idx->i += 1;
 }
 
-void	int_point_plus(int *p, int *i, t_flag *flag, char *x, int len)
+void	int_point_plus(t_index *idx, char *x, int len)
 {
 	//printf("jeeai");
-	if ((flag->n1 > flag->n2) && (flag->n2 > len) && (flag->neg == 0))
-		print_only_c(p, (flag->n1 - flag->n2), ' ');
-	if((flag->n1 > flag->n2) && (flag->n2 > len) && (flag->neg == 1))
-		print_only_c(p, (flag->n1 - flag->n2 - 1), ' ');
-	if ((flag->n1 > len) && (flag->n2 <= len) 
-			&& (flag->n2 >= 0)  && (flag->neg == 0))
-		print_only_c(p, (flag->n1 - len), ' ');
-	if (flag->n1 > len && flag->n2 <= len && flag->n2 > 0 && flag->neg == 1)
-		print_only_c(p, (flag->n1 - len - 1), ' ');
-	if (flag->n2 < 0 && flag->zero == 0 && flag->neg == 1)
-		print_only_c(p, (flag->n1 - len - 1), ' ');
-	if (flag->neg == 1)
-		ft_putchar('-', p);
-	if (flag->n2 < 0 && flag->zero == 0 && flag->neg == 1)
-		ft_putstr(x, p, ft_strlen(x));
-	else if (flag->zero == 1 && flag->n2 < 0 && flag->neg == 1)
-		str_no_point(flag->n1 - 1, p, x, flag, '0');
-	else if (flag->zero == 1 && flag->n2 < 0 && flag->neg == 0)
-		str_no_point(flag->n1, p, x, flag, '0');
-	else if (flag->n2 > 0)
-		str_no_point(flag->n2, p, x, flag, '0');
+	if ((idx->n1 > idx->n2) && (idx->n2 > len) && (idx->neg == 0))
+		print_only_c(idx, (idx->n1 - idx->n2), ' ');
+	if((idx->n1 > idx->n2) && (idx->n2 > len) && (idx->neg == 1))
+		print_only_c(idx, (idx->n1 - idx->n2 - 1), ' ');
+	if ((idx->n1 > len) && (idx->n2 <= len) 
+			&& (idx->n2 >= 0)  && (idx->neg == 0))
+		print_only_c(idx, (idx->n1 - len), ' ');
+	if (idx->n1 > len && idx->n2 <= len && idx->n2 > 0 && idx->neg == 1)
+		print_only_c(idx, (idx->n1 - len - 1), ' ');
+	if (idx->n2 < 0 && idx->zero == 0 && idx->neg == 1)
+		print_only_c(idx, (idx->n1 - len - 1), ' ');
+	if (idx->neg == 1)
+		ft_putchar('-', &idx->p);
+	if (idx->n2 < 0 && idx->zero == 0 && idx->neg == 1)
+		ft_putstr(x, &idx->p, ft_strlen(x));
+	else if (idx->zero == 1 && idx->n2 < 0 && idx->neg == 1)
+		str_no_point(idx->n1 - 1, x, '0', idx);
+	else if (idx->zero == 1 && idx->n2 < 0 && idx->neg == 0)
+		str_no_point(idx->n1, x, '0', idx);
+	else if (idx->n2 > 0)
+		str_no_point(idx->n2, x, '0', idx);
 	else
-		str_point(flag->n1, p, x, flag);
-	*i += 1;
+		str_point(idx->n1, x, idx);
+	idx->i += 1;
 }
 
-void	int_point_minus(int *p, int *i, t_flag *flag, char *x, int len)
+void	int_point_minus(t_index *idx, char *x, int len)
 {
 	//printf("jeeai");
-	if (flag->minus == 1 && x[0] == '0' && x[1] == '\0' && flag->n2 == 0)
-		print_only_c(p, flag->n1, ' ');
+	if (idx->minus == 1 && x[0] == '0' && x[1] == '\0' && idx->n2 == 0)
+		print_only_c(idx, idx->n1, ' ');
 	else
 	{
-		if (len < flag->n2)
-			len = flag->n2;
-		if (flag->neg == 1)
-			ft_putchar('-', p);
-		flag->minus = 0;
-		str_no_point(flag->n2, p, x, flag, '0');
-		if (flag->neg == 0)
-			print_only_c(p, (flag->n1 - len), ' ');
+		if (len < idx->n2)
+			len = idx->n2;
+		if (idx->neg == 1)
+			ft_putchar('-', &idx->p);
+		idx->minus = 0;
+		str_no_point(idx->n2, x, '0', idx);
+		if (idx->neg == 0)
+			print_only_c(idx, (idx->n1 - len), ' ');
 		else
-			print_only_c(p, (flag->n1 - len - 1), ' ');
+			print_only_c(idx, (idx->n1 - len - 1), ' ');
 	}
-	*i += 1;
+	idx->i += 1;
 }

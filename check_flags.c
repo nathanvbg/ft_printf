@@ -6,95 +6,96 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 18:12:25 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/02/26 19:35:10 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/07/23 14:18:38 by nathanvbg        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		flags(va_list arg, const char *str, int *p, int *i, t_flag *flag)
+int		check_flags(va_list arg, const char *str, t_index *idx)
 {
-	*i = *i + 1;
-
-	check_flags_0(str, i, flag);
-	check_flags_1(arg, str, i, flag);
-	check_flags_2(str, i, flag);
-	check_flags_3(arg, str, i, flag);
-	if (specifier(arg, str, p, i, flag) == -1)
+	idx->i = idx->i + 1;
+	check_flags_0(str, idx);
+	check_flags_1(arg, str, idx);
+	check_flags_2(str, idx);
+	check_flags_3(arg, str, idx);
+	if (check_specifier(arg, str, idx) == -1)
 		return (-1);
 	return (0);
 }
 
-void	check_flags_0(const char *str,int *i, t_flag *flag)
+void	check_flags_0(const char *str, t_index *idx)
 {
-	if (str[*i] == '0')
+	if (str[idx->i] == '0')
 	{
-		flag->zero = 1;
-		*i += 1;
+		idx->zero = 1;
+		idx->i += 1;
 	}
 }
 
-void	check_flags_1(va_list arg, const char *str, int *i, t_flag *flag)
+void	check_flags_1(va_list arg, const char *str, t_index *idx)
 {
-	while (ft_isdigit(str[*i]) == 1 || str[*i] == '-' || str[*i] == '*')
+	while (ft_isdigit(str[idx->i]) == 1 || str[idx->i] == '-'
+			|| str[idx->i] == '*')
 	{
-		if (str[*i] == '-')
+		if (str[idx->i] == '-')
 		{
-			flag->minus = 1;
-			*i += 1;
+			idx->minus = 1;
+			idx->i += 1;
 		}
-		if (str[*i] == '*')
+		if (str[idx->i] == '*')
 		{
-			flag->n1 = va_arg(arg, int);
-			if (flag->n1 < 0)
+			idx->n1 = va_arg(arg, int);
+			if (idx->n1 < 0)
 			{
-				flag->minus = 1;
-				flag->n1 *= -1;
+				idx->minus = 1;
+				idx->n1 *= -1;
 			}
-			*i += 1;
+			idx->i += 1;
 		}
-		while (str[*i] >= '0' && str[*i] <= '9')
+		while (str[idx->i] >= '0' && str[idx->i] <= '9')
 		{
-			flag->n1 = (flag->n1 * 10) + (str[*i] - '0');
-			*i += 1;
+			idx->n1 = (idx->n1 * 10) + (str[idx->i] - '0');
+			idx->i += 1;
 		}
 	}
 }
 
-void	check_flags_2(const char *str, int *i, t_flag *flag)
+void	check_flags_2(const char *str, t_index *idx)
 {
-	if (str[*i] == '.')
+	if (str[idx->i] == '.')
 	{
-		flag->point = 1;
-		*i += 1;
+		idx->point = 1;
+		idx->i += 1;
 	}
 }
 
-void	check_flags_3(va_list arg, const char *str, int *i, t_flag *flag)
+void	check_flags_3(va_list arg, const char *str, t_index *idx)
 {
-	while (ft_isdigit(str[*i]) == 1 || str[*i] == '-' || str[*i] == '*')
+	while (ft_isdigit(str[idx->i]) == 1 || str[idx->i] == '-'
+			|| str[idx->i] == '*')
 	{
-		if (str[*i] == '0')
+		if (str[idx->i] == '0')
 		{
-			flag->zero_perc = 1;
-			*i += 1;
+			idx->zero_perc = 1;
+			idx->i += 1;
 		}
-		if (str[*i] == '-')
+		if (str[idx->i] == '-')
 		{
-			flag->minus = 1;
-			*i += 1;
+			idx->minus = 1;
+			idx->i += 1;
 		}
-		if (str[*i] == '*')
+		if (str[idx->i] == '*')
 		{
-			flag->n2 = va_arg(arg, int);
-			*i += 1;
+			idx->n2 = va_arg(arg, int);
+			idx->i += 1;
 		}
-		while (str[*i] >= '0' && str[*i] <= '9')
+		while (str[idx->i] >= '0' && str[idx->i] <= '9')
 		{
-			flag->n2 = (flag->n2 * 10) + (str[*i] - '0');
-			*i += 1;
+			idx->n2 = (idx->n2 * 10) + (str[idx->i] - '0');
+			idx->i += 1;
 		}
 	}
-	if (flag->minus == 1)
-		flag->zero = 0;
+	if (idx->minus == 1)
+		idx->zero = 0;
 }

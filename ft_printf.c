@@ -6,7 +6,7 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 11:27:12 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/02/26 19:45:06 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/07/21 12:16:01 by nathanvbg        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,40 +22,40 @@ int		ft_free(char **str, int i)
 	return (i);
 }
 
-void	ft_init_flag(t_flag *flag)
+void	ft_init_index(t_index *idx)
 {
-	flag->zero = 0;
-	flag->zero_perc = 0;
-	flag->point = 0;
-	flag->minus = 0;
-	flag->neg = 0;
-	flag->percentage = 0;
-	flag->n1 = 0;
-	flag->n2 = 0;
+	idx->zero = 0;
+	idx->zero_perc = 0;
+	idx->point = 0;
+	idx->minus = 0;
+	idx->neg = 0;
+	idx->percentage = 0;
+	idx->n1 = 0;
+	idx->n2 = 0;
 }
 
 int		ft_printf(const char *fmt, ...)
 {
 	va_list arg;
-	t_flag flag;
+	t_index idx;
 
 	va_start(arg, fmt);
-	flag.i = 0;
-	flag.p = 0;
-	while (fmt[flag.i])
+	idx.i = 0;
+	idx.p = 0;
+	while (fmt[idx.i])
 	{
-		ft_init_flag(&flag);
-		if (fmt[flag.i] == '%')
+		ft_init_index(&idx);
+		if (fmt[idx.i] == '%')
 		{
-			if (flags(arg, fmt, &flag.p, &flag.i, &flag) == -1)
+			if (check_flags(arg, fmt, &idx) == -1)
 				return (-1);
 		}
 		else
 		{
-			ft_putchar(fmt[flag.i], &flag.p);
-			flag.i++;
+			ft_putchar(fmt[idx.i], &idx.p);
+			idx.i++;
 		}
 	}
 	va_end(arg);
-	return(flag.p);
+	return(idx.p);
 }

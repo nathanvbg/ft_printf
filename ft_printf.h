@@ -23,7 +23,7 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-typedef struct	s_flag
+typedef struct	s_index
 {
 	int		zero;
 	int		zero_perc;
@@ -35,30 +35,31 @@ typedef struct	s_flag
 	int		n2;
 	int		i;
 	int		p;
-}				t_flag;
+}				t_index;
 
 int		ft_printf(const char *cnt, ...);
-int		flags(va_list arg, const char *str, int *p, int *i, t_flag *flag);
-void	check_flags_0(const char *str, int *i, t_flag *flag);
-void	check_flags_1(va_list arg, const char *str, int *i, t_flag *flag);
-void	check_flags_2(const char *str, int *i, t_flag *flag);
-void	check_flags_3(va_list arg, const char *str, int *i, t_flag *flag);
-int		specifier(va_list arg, const char *str, int *p, int *i, t_flag *flag);
-int		specifier_u(va_list arg, int *p, int *i, t_flag *flag);
-int		specifier_x(va_list arg, int *p, int *i, t_flag *flag);
-int		specifier_X(va_list arg, int *p, int *i, t_flag *flag);
-int		specifier_p(va_list arg, int *p, int *i, t_flag *flag);
-int		specifier_perc(int *p, int *i, t_flag *flag);
-int		specifier_char(va_list arg, int *p, int *i, t_flag *flag);
-int		specifier_str(va_list arg, int *p, int *i, t_flag *flag);
-int		specifier_int(va_list arg, int *p, int *i, t_flag *flag);
-void	int_tri_flags(int *p, int *i, t_flag *flag, char *x, int len);
-void	int_no_point(int *p, int *i, t_flag *flag, char *x, int len);
-void	int_point_plus(int *p, int *i, t_flag *flag, char *x, int len);
-void	int_point_minus(int *p, int *i, t_flag *flag, char *x, int len);
-void	str_no_point(int nb, int *p, char *x, t_flag *flag, char c);
-void	str_point(int nb, int *p, char *x, t_flag *flag);
-void	print_only_c(int *p, int nb, char c);
+int		check_flags(va_list arg, const char *str, t_index *idx);
+void	check_flags_0(const char *str, t_index *idx);
+void	check_flags_1(va_list arg, const char *str, t_index *idx);
+void	check_flags_2(const char *str, t_index *idx);
+void	check_flags_3(va_list arg, const char *str, t_index *idx);
+int		check_specifier(va_list arg, const char *str, t_index *idx);
+int		specifier_u(va_list arg, t_index *idx);
+int		specifier_x(va_list arg, t_index *idx);
+int		specifier_X(va_list arg, t_index *idx);
+int		specifier_p(va_list arg, t_index *idx);
+int		specifier_perc(t_index *idx);
+int		specifier_char(va_list arg, t_index *idx);
+int		specifier_str(va_list arg, t_index *idx);
+int		specifier_int(va_list arg, t_index *idx);
+void	int_tri_flags(t_index *idx, char *x, int len);
+void	int_no_point(t_index *idx, char *x, int len);
+void	int_point_plus(t_index *idx, char *x, int len);
+void	int_point_minus(t_index *idx, char *x, int len);
+void	str_no_point(int nb, char *x, char c, t_index *idx);
+void	str_point(int nb, char *x, t_index *idx);
+void	print_only_c(t_index *idx,int nb, char c);
 int		ft_free(char** str, int i);
+void	ft_init_index(t_index *idx);
 
 #endif
