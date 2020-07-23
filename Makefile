@@ -7,7 +7,7 @@ SRCS =	ft_printf.c\
 		specifier_rest.c\
 		specifier_str.c\
 		check_flags.c\
-		check_specifier.c
+		utils.c
 OBJS = $(SRCS:.c=.o)
 all: $(LIBFT) $(NAME)
 $(NAME): $(OBJS)

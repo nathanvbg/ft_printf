@@ -6,7 +6,7 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 10:58:48 by nverbrug          #+#    #+#             */
-/*   Updated: 2019/11/25 15:55:21 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/07/23 19:13:58 by nathanvbg        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_substr(char const *s, int start, int len)
 {
-	int	i;
+	int		i;
 	char	*str;
 
 	if (s == NULL)

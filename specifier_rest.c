@@ -23,7 +23,7 @@ int		specifier_u(va_list arg, t_index *idx)
 int		specifier_x(va_list arg, t_index *idx)
 {
 	char			*x;
-	unsigned int	nb;//unsigned int?
+	unsigned int	nb;
 	int				len;
 
 	nb = va_arg(arg, unsigned int);
@@ -34,10 +34,10 @@ int		specifier_x(va_list arg, t_index *idx)
 	return (ft_strncmp(x, "", 1) != 0 ? ft_free(&x, 0) : 0);
 }
 
-int		specifier_X(va_list arg, t_index *idx)
+int		specifier_hex(va_list arg, t_index *idx)
 {
 	char			*x;
-	unsigned int	nb;//unsigned int?
+	unsigned int	nb;
 	int				len;
 
 	nb = va_arg(arg, unsigned int);

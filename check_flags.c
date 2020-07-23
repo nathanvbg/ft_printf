@@ -6,7 +6,7 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 18:12:25 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/07/23 14:18:38 by nathanvbg        ###   ########.fr       */
+/*   Updated: 2020/07/23 19:28:50 by nathanvbg        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		check_flags(va_list arg, const char *str, t_index *idx)
 	check_flags_1(arg, str, idx);
 	check_flags_2(str, idx);
 	check_flags_3(arg, str, idx);
+	if (idx->minus == 1)
+		idx->zero = 0;
 	if (check_specifier(arg, str, idx) == -1)
 		return (-1);
 	return (0);
@@ -96,6 +98,4 @@ void	check_flags_3(va_list arg, const char *str, t_index *idx)
 			idx->i += 1;
 		}
 	}
-	if (idx->minus == 1)
-		idx->zero = 0;
 }

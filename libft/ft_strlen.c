@@ -6,13 +6,13 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:28:39 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/03/04 16:10:22 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/07/23 19:30:20 by nathanvbg        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strlen(const char *str)
+int		ft_strlen(const char *str)
 {
 	int compteur;
 
