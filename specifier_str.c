@@ -6,7 +6,7 @@
 /*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:15:20 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/07/23 13:37:35 by nathanvbg        ###   ########.fr       */
+/*   Updated: 2020/07/23 15:23:29 by nathanvbg        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		specifier_str(va_list arg, t_index *idx)
 
 void	str_no_point(int nb, char *x, char c, t_index *idx)
 {
-	if (idx->minus == 0) //|| flag->n2 < 0)
+	if (idx->minus == 0)
 		print_only_c(idx, (nb - ft_strlen(x)), c);
 	ft_putstr(x, &idx->p, ft_strlen(x));
 	if (idx->minus == 1)

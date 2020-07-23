@@ -1,31 +1,29 @@
-
-SRC = *.c
 NAME = libftprintf.a
-OBJS = $(SRC:%.c=%.o)
-GCC = gcc
-RM = rm -rf
-HEADER = include
-LIBFT = libft
-CFLAGS = -Wall -Wextra -Werror
-
-all: ${NAME}
-
-$(OBJS): $(SRC)
-	$(GCC) -c $(SRC)
-
-$(NAME): ${OBJS}
-	make -C $(LIBFT)
-	cp libft/libft.a ./$(NAME)
-	ar rcs $(NAME) $(OBJS)
-
+FLAGS = -Wall -Wextra -Werror
+LFT_SRC = libft
+LIBFT = $(LFT_SRC)/libft.a
+SRCS =	ft_printf.c\
+		specifier_int.c\
+		specifier_rest.c\
+		specifier_str.c\
+		check_flags.c\
+		check_specifier.c
+OBJS = $(SRCS:.c=.o)
+all: $(LIBFT) $(NAME)
+$(NAME): $(OBJS)
+	@echo "Compilation ft_printf..."
+	@cp $(LIBFT) $(NAME)
+	@ar rc $(NAME) $(OBJS)
+	@echo "Compilation ft_printf\t\t\033[0;32m[OK]\033[0m"
+$(LIBFT):
+	@(cd $(LFT_SRC) && $(MAKE))
 clean:
-	${RM} ${OBJS}
-	make clean -C $(LIBFT)
-
+	@rm -f $(OBJS)
+	@(cd $(LFT_SRC) && $(MAKE) $@)
+	@echo "Cleaning Objects ft_printf\t\033[0;32m[OK]\033[0m"
 fclean: clean
-	${RM} ${NAME}
-	make fclean -C $(LIBFT)
-
+	@rm -f $(NAME)
+	@(cd $(LFT_SRC) && $(MAKE) $@)
+	@echo "Cleaning libftprintf.a\t\t\033[0;32m[OK]\033[0m"
 re: fclean all
-
-.PHONY: all fclean clean re
+.PHONY:all fclean re
