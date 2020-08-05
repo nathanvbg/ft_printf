@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   specifier_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nverbrug <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nverbrug <nverbrug@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/17 16:41:28 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/07/23 19:18:19 by nathanvbg        ###   ########.fr       */
+/*   Created: 2020/07/31 17:39:21 by nverbrug          #+#    #+#             */
+/*   Updated: 2020/08/05 13:14:05 by nverbrug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		specifier_int(va_list arg, t_index *idx)
 		idx->neg = 1;
 		nb = -nb;
 	}
-	if (nb == INT_MIN)//pq int_min pas int_max?
+	if (nb == INT_MIN)
 	{
 		if ((x = ft_strdup("2147483648")) == NULL)
 			(ft_free(&x, -1));
