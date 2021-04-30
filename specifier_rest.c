@@ -6,7 +6,7 @@
 /*   By: nverbrug <nverbrug@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 17:39:35 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/07/31 17:39:40 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/08/05 14:58:42 by nverbrug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		specifier_u(va_list arg, t_index *idx)
 		nb = -nb;
 	}
 	if (!(x = ft_itoa_base(nb, "0123456789", 10)))
-		ft_free(&x, -1);
+		return (ft_free(&x, -1));
 	len = ft_strlen(x);
 	int_tri_flags(idx, x, len);
 	return (ft_strncmp(x, "", 1) != 0 ? ft_free(&x, 0) : 0);
@@ -39,7 +39,7 @@ int		specifier_x(va_list arg, t_index *idx)
 
 	nb = va_arg(arg, unsigned int);
 	if (!(x = ft_itoa_base(nb, "0123456789abcdef", 16)))
-		ft_free(&x, -1);
+		return (ft_free(&x, -1));
 	len = ft_strlen(x);
 	int_tri_flags(idx, x, len);
 	return (ft_strncmp(x, "", 1) != 0 ? ft_free(&x, 0) : 0);
@@ -53,7 +53,7 @@ int		specifier_hex(va_list arg, t_index *idx)
 
 	nb = va_arg(arg, unsigned int);
 	if (!(x = ft_itoa_base(nb, "0123456789ABCDEF", 16)))
-		ft_free(&x, -1);
+		return (ft_free(&x, -1));
 	len = ft_strlen(x);
 	int_tri_flags(idx, x, len);
 	return (ft_strncmp(x, "", 1) != 0 ? ft_free(&x, 0) : 0);
@@ -70,7 +70,7 @@ int		specifier_p(va_list arg, t_index *idx)
 	else
 	{
 		if ((x = ft_itoa_base(nb, "0123456789abcdef", 16)) == NULL)
-			ft_free(&x, -1);
+			return (ft_free(&x, -1));
 	}
 	if (idx->minus == 0)
 		print_only_c(idx, (idx->n1 - ft_strlen(x) - 2), ' ');

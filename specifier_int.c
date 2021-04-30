@@ -6,7 +6,7 @@
 /*   By: nverbrug <nverbrug@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 17:39:21 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/08/05 13:14:05 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/08/05 15:09:15 by nverbrug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int		specifier_int(va_list arg, t_index *idx)
 	if (nb == INT_MIN)
 	{
 		if ((x = ft_strdup("2147483648")) == NULL)
-			(ft_free(&x, -1));
+			return (ft_free(&x, -1));
 	}
 	else
 	{
 		if (!(x = ft_itoa(nb)))
-			ft_free(&x, -1);
+			return (ft_free(&x, -1));
 	}
 	len = ft_strlen(x);
 	int_tri_flags(idx, x, len);

@@ -6,7 +6,7 @@
 /*   By: nverbrug <nverbrug@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 17:36:37 by nverbrug          #+#    #+#             */
-/*   Updated: 2020/07/31 17:36:54 by nverbrug         ###   ########.fr       */
+/*   Updated: 2020/08/05 13:34:33 by nverbrug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <limits.h>
 # include <stdarg.h>
 # include <unistd.h>
-
-# include <stdio.h>
-
 # include <stdlib.h>
 # include "libft/libft.h"
 
